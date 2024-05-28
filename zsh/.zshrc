@@ -1,6 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH=$HOME/.emacs.d/bin:$PATH
 export PATH=$HOME/Library/Frameworks/Python.framework/Versions/3.12/bin:${PATH}
+export PATH=$HOME/.cargo/bin:$PATH
 export GIT_EDITOR=nvim
 ZSH_THEME="refined"
 
