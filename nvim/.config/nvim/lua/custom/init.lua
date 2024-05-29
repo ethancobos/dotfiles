@@ -1,1 +1,2 @@
-vim.opt.colorcolumn = "80"
+-- disabled in lieu of smartcolumn package
+-- vim.opt.colorcolumn = "80"

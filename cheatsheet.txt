@@ -1,0 +1,3 @@
+******* TMUX *******
+
+resize pane: C-Space <hold option and arrow key>

@@ -1,10 +1,14 @@
 alias i="ipython"
 alias h="cd ~"
 alias vim="nvim"
-alias sz="source ~/.zshrc"
-alias capstone="cd ~/Documents/Capstone"
+
+# give me more info with ls
 alias ls="ls -a --color"
+
+# aliases for editting and sourcing configuration files
 alias vz="vim ~/.zshrc"
 alias vt="vim ~/.tmux.conf"
 alias va="vim ~/.zsh_aliases"
-alias vv="cd ~/.config/nvim && vim ~/.config/nvim/"
+alias vv="cd ~/.config/nvim/ && vim ~/.config/nvim/lua/custom/plugins.lua"
+alias sz="source ~/.zshrc"
+alias st="tmux source ~/.tmux.conf"
