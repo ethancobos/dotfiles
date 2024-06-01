@@ -1,3 +1,8 @@
 ******* TMUX *******
 
 resize pane: C-Space <hold option and arrow key>
+
+
+******* Neovim *******
+
+toggle trouble view: <leader>xx

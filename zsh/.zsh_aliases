@@ -12,3 +12,9 @@ alias va="vim ~/.zsh_aliases"
 alias vv="cd ~/.config/nvim/ && vim ~/.config/nvim/lua/custom/plugins.lua"
 alias sz="source ~/.zshrc"
 alias st="tmux source ~/.tmux.conf"
+
+# pull up cheatsheet
+alias cs="vim ~/dotfiles/cheatsheet.txt"
+
+# bookmarks
+alias insta="cd ~/Documents/Python\ Projects/unfollow-bot/"

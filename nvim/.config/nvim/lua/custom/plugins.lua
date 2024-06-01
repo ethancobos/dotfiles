@@ -1,5 +1,4 @@
 local plugins = {
-
   -- tmux integration with nvim
   {
     "christoomey/vim-tmux-navigator",
@@ -24,16 +23,18 @@ local plugins = {
     end,
   },
 
-  -- for trouble package
-  {
-    'nvim-tree/nvim-web-devicons',
-  },
-
   -- lets me see lsp errors in their own buffer
   {
     "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {},
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+    },
     lazy = false,
   },
 
@@ -41,9 +42,18 @@ local plugins = {
   {
     "m4xshen/smartcolumn.nvim",
     opts = {
-      disabled_filetypes = {"help", "text", "markdown", "Trouble"   },
+      disabled_filetypes = {"help", "text", "markdown", "Trouble"},
     },
     lazy = false
+  },
+
+  -- python static analysis and linting
+  {
+    "nvimtools/none-ls.nvim",
+    ft = {"python"},
+    opts = function()
+      return require "custom.configs.null-ls"
+    end,
   },
 }
 return plugins
