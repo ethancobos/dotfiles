@@ -17,4 +17,4 @@ alias st="tmux source ~/.tmux.conf"
 alias cs="vim ~/dotfiles/cheatsheet.txt"
 
 # bookmarks
-alias insta="cd ~/Documents/Python\ Projects/unfollow-bot/"
+alias insta="cd ~/Documents/Programming\ Projects/Python/unfollow-bot"

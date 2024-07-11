@@ -1,8 +1,7 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
--- don't know why the following line is the way it is kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
--- but it breaks otherwise
+-- don't know why this is a warning
 local lspconfig = require("lspconfig")
 
 local util = require "lspconfig/util"
