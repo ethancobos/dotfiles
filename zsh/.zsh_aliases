@@ -1,0 +1,17 @@
+alias i="ipython"
+alias python="python3"
+alias pip="pip3"
+alias h="cd ~"
+alias vim="nvim"
+alias c="clear"
+
+# give me more info with ls
+alias ls="ls -a --color"
+
+# aliases for editing and sourcing configuration files
+alias vz="vim ~/.zshrc"
+alias vt="vim ~/.tmux.conf"
+alias va="vim ~/.zsh_aliases"
+alias vnv="cd ~/.config/nvim/ && vim ~/.config/nvim/lua/custom/plugins.lua"
+alias sz="source ~/.zshrc"
+alias st="tmux source ~/.tmux.conf"

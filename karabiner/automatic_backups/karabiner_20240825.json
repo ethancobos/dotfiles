@@ -1,0 +1,41 @@
+{
+    "profiles": [
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "manipulators": [
+                            {
+                                "description": "Change caps_lock to escape if tapped, but to control when held",
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_control",
+                                        "lazy": true
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 6505,
+                        "vendor_id": 12951
+                    },
+                    "ignore": true
+                }
+            ],
+            "name": "Default profile",
+            "selected": true
+        }
+    ]
+}
