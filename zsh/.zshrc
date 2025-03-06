@@ -79,9 +79,8 @@ source ~/dotfiles/zsh/.zsh_aliases
 eval "$(fzf --zsh)"
 
 # PATH variable
-export PATH=$HOME/.emacs.d/bin:$PATH
-export PATH=$HOME/Library/Frameworks/Python.framework/Versions/3.12/bin:${PATH}
-export PATH=$HOME/.cargo/bin:$PATH
+# Use homebrew python3 instead of system python3
+export PATH=$HOME/opt/homebrew/opt/python@3.13/libexec/bin:$PATH
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

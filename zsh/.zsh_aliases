@@ -1,6 +1,5 @@
-alias i="ipython"
-alias python="python3"
-alias pip="pip3"
+# misc
+alias i="ipython3"
 alias h="cd ~"
 alias vim="nvim"
 alias c="clear"
@@ -14,5 +13,11 @@ alias vt="vim ~/.tmux.conf"
 alias va="vim ~/.zsh_aliases"
 alias vnv="cd ~/.config/nvim/ && vim ~/.config/nvim/lua/custom/plugins.lua"
 alias sz="source ~/.zshrc"
+
+# tmux aliases
 alias st="tmux source ~/.tmux.conf"
 alias tks="tmux kill-session"
+alias tls="tmux ls"
+alias tat="tmux attach -t"
+alias tst="tmux switch-client -t"
+alias tns="tmux new-session -s"
