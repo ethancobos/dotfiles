@@ -1,7 +1,0 @@
-[MASTER]
-disable=
-    C0114, # missing-module-docstring
-    C0103, # name doesn't conform to uppercase naming style
-    wrong-import-order, #
-    unused-import, #
-    line-too-long, #

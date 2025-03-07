@@ -1,8 +1,12 @@
 # misc
-alias i="ipython3"
 alias h="cd ~"
 alias vim="nvim"
 alias c="clear"
+
+# python
+alias python="python3"
+alias pip="pip3"
+alias i="ipython3"
 
 # give me more info with ls
 alias ls="ls -a --color"

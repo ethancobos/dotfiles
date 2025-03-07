@@ -1,0 +1,13 @@
+[lint]
+extend-select = [
+    "D", 
+    "D213", # enable multi-line-summary-second-line
+]
+
+ignore = [
+    "D212", # disable multi-line-summary-first-line
+]
+
+
+[lint.pydocstyle]
+convention = "google"

@@ -82,5 +82,8 @@ eval "$(fzf --zsh)"
 # Use homebrew python3 instead of system python3
 export PATH=$HOME/opt/homebrew/opt/python@3.13/libexec/bin:$PATH
 
+# find my bash scripts
+export PATH=$HOME/bin/:$PATH
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
