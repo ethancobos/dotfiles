@@ -3,6 +3,8 @@ local options = {
         "python",
         "bash",
         "lua",
+        "ruby",
+        "rust",
         "luadoc",
         "markdown",
         "printf",
