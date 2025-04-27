@@ -1,0 +1,30 @@
+# Set up mise for runtime management
+eval "$(/home/ecobos/.local/bin/mise activate zsh)"
+source ~/.local/share/mise/completions.zsh
+source /home/ecobos/.brazil_completion/zsh_completion
+
+export BRAZIL_WORKSPACE_DEFAULT_LAYOUT=short
+
+export AUTO_TITLE_SCREENS="NO"
+
+# if you wish to use IMDS set AWS_EC2_METADATA_DISABLED=false
+export AWS_EC2_METADATA_DISABLED=true
+
+export PROMPT="
+%{$fg[white]%}(%D %*) <%?> [%~] $program %{$fg[default]%}
+%{$fg[cyan]%}%m %#%{$fg[default]%} "
+
+export RPROMPT=
+
+set-title() {
+    echo -e "\e]0;$*\007"
+}
+
+ssh() {
+    set-title $*;
+    /usr/bin/ssh -2 $*;
+    set-title $HOST;
+}
+
+# Enables autocompletion for the ddb command - Installed by MechanicBigBirdCli
+[ -f "/apollo/env/MechanicBigBirdCli/bin/mechanic-autocomplete.sh" ] && source "/apollo/env/MechanicBigBirdCli/bin/mechanic-autocomplete.sh"

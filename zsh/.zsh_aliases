@@ -1,6 +1,35 @@
+# Work-specific aliaes
+if $ON_WORK_COMPUTER; then
+    # Brazil
+    alias bb=brazil-build
+    alias bba='brazil-build apollo-pkg'
+    alias bre='brazil-runtime-exec'
+    alias brc='brazil-recursive-cmd'
+    alias bws='brazil ws'
+    alias bwsuse='bws use -p'
+    alias bwscreate='bws create -n'
+    alias brc=brazil-recursive-cmd
+    alias bbr='brc brazil-build'
+    alias bball='brc --allPackages'
+    alias bbb='brc --allPackages brazil-build'
+    alias bbra='bbr apollo-pkg'
+
+    # Other
+    alias auth="mwinit -o && kinit -f"
+    alias print-java-version='printf "\n☕️ Java\n\n" && which java && java -version'
+    alias switch-java-version='sudo alternatives --config java && source ~/.zshrc'
+    alias isengard="/apollo/env/AmazonAwsCli/bin/isengard"
+    alias kcurl="/apollo/env/envImprovement/bin/kcurl"
+
+# Home-specific aliases
+else
+    export PATH=$HOME/opt/homebrew/opt/python@3.13/libexec/bin:$PATH
+fi
+
+# Place any work/home independent aliases here
+
 # misc
 alias h="cd ~"
-alias vim="nvim"
 alias c="clear"
 
 # python
@@ -11,17 +40,19 @@ alias i="ipython3"
 # give me more info with ls
 alias ls="ls -a --color"
 
+# vim
+alias vim="nvim"
+
 # aliases for editing and sourcing configuration files
 alias vz="vim ~/.zshrc"
 alias vt="vim ~/.tmux.conf"
 alias va="vim ~/.zsh_aliases"
-alias vnv="cd ~/.config/nvim/ && vim ~/.config/nvim/lua/custom/plugins.lua"
 alias sz="source ~/.zshrc"
-
-# tmux aliases
 alias st="tmux source ~/.tmux.conf"
-alias tks="tmux kill-session"
-alias tls="tmux ls"
+
+# tmux
 alias tat="tmux attach -t"
-alias tst="tmux switch-client -t"
-alias tns="tmux new-session -s"
+alias tst="tmux switch -t"
+alias tks="tmux kill-session"
+alias tkst="tmux kill-session -t"
+alias tls="tmux ls"

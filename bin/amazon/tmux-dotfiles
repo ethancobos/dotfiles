@@ -1,0 +1,38 @@
+#!/bin/bash
+
+REPO_ROOT=$HOME/work-dotfiles/
+SESSION_NAME="dotfiles"
+
+# Ensure the target is a valid directory
+if [ ! -d "$REPO_ROOT" ]; then
+  echo "Error: '$REPO_ROOT' is not a directory."
+  exit 1
+fi
+
+# Check if a tmux session with this name already exists
+tmux has-session -t "$SESSION_NAME" 2>/dev/null
+if [ $? -eq 0 ]; then
+  tmux attach-session -t "$SESSION_NAME"
+  exit 0
+fi
+
+# Create a new tmux session
+tmux new-session -d -s "$SESSION_NAME" -c "$REPO_ROOT"
+
+# Configure the first window (default window)
+tmux rename-window -t "$SESSION_NAME:0" "work-dotfiles"
+
+# Create a new window named after the directory
+tmux new-window -t "$SESSION_NAME:" -n "vim" -c "$REPO_ROOT"
+
+# split the window in half
+tmux split-window -h -t "$SESSION_NAME:vim" -c "$REPO_ROOT"
+
+# make the left pane take up two thirds of the screen
+tmux resize-pane -t "$SESSION_NAME:vim.0" -R $(($(tput cols) / 3))
+
+# Open vim in the left pane (pane 0)
+tmux send-keys -t "$SESSION_NAME:vim.0" 'vim' C-m
+
+# Attach to the newly created session
+tmux attach-session -t "$SESSION_NAME"

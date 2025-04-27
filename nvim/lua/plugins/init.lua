@@ -23,7 +23,6 @@ return {
         "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
-            require("nvchad.configs.lspconfig").defaults()
             require("configs.lspconfig")
         end,
     },
@@ -41,6 +40,12 @@ return {
     {
         "christoomey/vim-tmux-navigator",
         lazy = false,
+    },
+
+    -- easy integration of jdtls
+    {
+        "mfussenegger/nvim-jdtls",
+        ft = "java",
     },
 
     -- lsp errors in own buffer

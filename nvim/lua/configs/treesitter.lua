@@ -3,6 +3,7 @@ local options = {
         "python",
         "bash",
         "lua",
+        "java",
         "ruby",
         "rust",
         "luadoc",

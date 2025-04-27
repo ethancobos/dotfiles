@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ln -s ~/work-dotfiles/python/.mypy.ini && ln -s ~/work-dotfiles/python/.ruff.toml

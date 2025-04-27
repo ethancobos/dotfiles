@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Check if a directory is provided as an argument
+if [ -z "$1" ]; then
+  echo "Usage: $0 <directory>"
+  exit 1
+fi
+
+# Use the provided directory as the target
+WS_ROOT="$1"
+SRC_ROOT="$WS_ROOT"/src
+
+# Ensure the target is a valid directory
+if [ ! -d "$WS_ROOT" ]; then
+  echo "Error: '$WS_ROOT' is not a directory."
+  exit 1
+fi
+
+# Get the base name of the current working directory
+SESSION_NAME=$(basename "$WS_ROOT")
+
+# Check if a tmux session with this name already exists
+tmux has-session -t "$SESSION_NAME" 2>/dev/null
+if [ $? -eq 0 ]; then
+  tmux attach-session -t "$SESSION_NAME"
+  exit 0
+fi
+
+# Create a new tmux session
+tmux new-session -d -s "$SESSION_NAME" -c "$WS_ROOT"
+
+# Configure the first window (default window)
+tmux rename-window -t "$SESSION_NAME:0" "ws"
+
+# Loop through subdirectories of the target directory and create a window for each
+for dir in "$SRC_ROOT"/*/; do
+  # Skip if no subdirectories are found
+  if [ ! -d "$dir" ]; then
+    continue
+  fi
+
+  # Remove the trailing slash from the directory name
+  dir_name=$(basename "$dir")
+
+  # Create a new window named after the directory
+  tmux new-window -t "$SESSION_NAME:" -n "$dir_name" -c "$dir"
+done
+
+# Attach to the newly created session
+tmux attach-session -t "$SESSION_NAME"
