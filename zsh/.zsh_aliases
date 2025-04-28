@@ -45,7 +45,7 @@ alias vim=nvim
 # aliases for editing and sourcing configuration files
 alias vz="vim ~/.zshrc"
 alias vt="vim ~/.tmux.conf"
-alias va="vim ~/.zsh_aliases"
+alias va="vim ~/dotfiles/zsh/.zsh_aliases"
 alias sz="source ~/.zshrc"
 alias st="tmux source ~/.tmux.conf"
 
