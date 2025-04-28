@@ -11,3 +11,4 @@ else
 fi
 
 # Place any work/home independent paths here
+export PATH=$HOME/.local/bin:$PATH

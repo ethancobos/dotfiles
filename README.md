@@ -3,6 +3,26 @@
 **TL;DR** Almost all configuration is inspired/stolen from [Dreams of Code](https://github.com/dreamsofcode-io) and [
 Dreams of Autonomy](https://github.com/dreamsofautonomy). I would highly recommend browsing through his Github and YouTube accounts.
 
+This repo contains a combination of my personal configuration and work configuration. See [General Setup](#general-setup) for the details on how I ensure that my work-specific and home-specific configuration doesn't mix.
+
+## General Setup
+
+First, clone the repository to your home directory (or wherever you prefer to store your dotfiles):
+
+    git clone https://github.com/ethancobos/dotfiles.git ~/.dotfiles
+
+In the future I'd like to create a script to automate all of the sim linking required for each directory, but for now I'll just put detailed instructions below for each sub-directory in this repo.
+
+### FOR WORK
+
+In order to include special work specific configuration, my `.zshrc` has some logic to check for the existence of a `$HOME/dotfiles/zsh/.work_mode` file, and if present, set an environment variable `ON_WORK_COMPUTER` to true, and false otherwise. I use the following command to create this file:
+
+    touch ~/dotfiles/zsh/.work_mode
+
+## Fine Grained Setup
+
+Below are all of the sub-directories of this repo and the commands to soft link all necessary configuration files
+
 ## AeroSpace
 ### Links
 
@@ -10,11 +30,12 @@ https://github.com/nikitabobko/AeroSpace
 
 * Also check out (yabai)[https://github.com/koekeishiya/yabai] which is the more popular window manager
 
-## Emacs/Doom
+## bin
 
-https://github.com/doomemacs/doomemacs
+This is where I keep any scripts that I write, both work related ones and general purpose ones. I soft link them using the following:
 
-* I was huge into Emacs until I discovered Neovim. As of late I only ever really use Emacs for LaTeX, which I find is really smooth with my configuration
+    ln -s ~/dotfiles/bin/general/ ~/.local/bin/
+    ln -s ~/dotfiles/bin/amazon/ ~/.local/bin/
 
 ## Karabiner
 
