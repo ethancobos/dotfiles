@@ -5,6 +5,7 @@ if $ON_WORK_COMPUTER; then
     export PATH=/apollo/env/OdinTools/bin:$PATH
     export PATH=/apollo/env/envImprovement/bin:$PATH
     export PATH=$HOME/.local/share/mise/shims:$PATH
+    export PATH=$HOME/.local/bin/amazon:$PATH
 # Home-specific PATHs
 else
     export PATH=$HOME/opt/homebrew/opt/python@3.13/libexec/bin:$PATH
@@ -12,3 +13,4 @@ fi
 
 # Place any work/home independent paths here
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin/general:$PATH
