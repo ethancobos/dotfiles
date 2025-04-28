@@ -22,8 +22,6 @@ require("lazy").setup({
 
     require("plugins.tokyonight"),
 
-    require("plugins.mini"),
-
     require("plugins.treesitter"),
 
     require("plugins.indent_line"),

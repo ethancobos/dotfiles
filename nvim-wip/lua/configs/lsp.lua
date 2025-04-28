@@ -111,16 +111,29 @@ vim.diagnostic.config({
     },
 })
 
--- LSP servers and clients are able to communicate to each other what features they support.
---  By default, Neovim doesn't support everything that is in the LSP specification.
---  When you add blink.cmp, luasnip, etc. Neovim now has *more* capabilities.
---  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
-local capabilities = require("blink.cmp").get_lsp_capabilities()
+-- get default capabilities
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+-- merge in blink capabilities
+capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities({}, false))
+
+-- merge in custom capabilities
+capabilities = vim.tbl_deep_extend("force", capabilities, {
+    textDocument = {
+        foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true,
+        },
+    },
+})
+
+vim.lsp.config("*", {
+    capabilities = capabilities,
+    root_markers = { ".git" },
+})
 
 vim.lsp.enable({
-    "jdtls",
+    -- "jdtls",
     "pyright",
     "ruby-lsp",
 })
