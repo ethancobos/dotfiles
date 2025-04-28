@@ -7,9 +7,6 @@ export BRAZIL_WORKSPACE_DEFAULT_LAYOUT=short
 
 export AUTO_TITLE_SCREENS="NO"
 
-# if you wish to use IMDS set AWS_EC2_METADATA_DISABLED=false
-export AWS_EC2_METADATA_DISABLED=true
-
 export PROMPT="
 %{$fg[white]%}(%D %*) <%?> [%~] $program %{$fg[default]%}
 %{$fg[cyan]%}%m %#%{$fg[default]%} "

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO_ROOT=$HOME/work-dotfiles/
+REPO_ROOT=$HOME/dotfiles/
 SESSION_NAME="dotfiles"
 
 # Ensure the target is a valid directory
