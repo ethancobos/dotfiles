@@ -56,6 +56,9 @@ return {
         end
 
         vim.lsp.config("*", { capabilities = capabilities, on_init = on_init })
+        vim.lsp.config("lua-language-server", require("lsp.lua-language-server"))
+        vim.lsp.config("pyright", require("lsp.pyright"))
+        vim.lsp.config("ruby-lsp", require("lsp.ruby-lsp"))
         vim.lsp.enable({
             "lua-language-server",
             "pyright",

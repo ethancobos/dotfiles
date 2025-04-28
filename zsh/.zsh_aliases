@@ -41,9 +41,7 @@ alias i="ipython3"
 alias ls="ls -a --color"
 
 # vim
-alias vim='NVIM_APPNAME="nvim" nvim'
-alias nvim-old='NVIM_APPNAME="nvim-old" nvim'
-
+alias vim=nvim
 # aliases for editing and sourcing configuration files
 alias vz="vim ~/.zshrc"
 alias vt="vim ~/.tmux.conf"

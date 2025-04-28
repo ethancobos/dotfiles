@@ -22,6 +22,3 @@ end)
 
 -- Autocmds
 require("configs.autocmds")
-
--- Configure LSPs
-require("configs.lsp")
