@@ -7,39 +7,80 @@ return {
             local lint = require("lint")
             lint.linters_by_ft = {
                 markdown = { "markdownlint" },
+                python = { "mypy", "ruff" },
+                ruby = { "rubocop" },
             }
 
-            -- To allow other plugins to add linters to require('lint').linters_by_ft,
-            -- instead set linters_by_ft like this:
-            -- lint.linters_by_ft = lint.linters_by_ft or {}
-            -- lint.linters_by_ft['markdown'] = { 'markdownlint' }
-            --
-            -- However, note that this will enable a set of default linters,
-            -- which will cause errors unless these tools are available:
-            -- {
-            --   clojure = { "clj-kondo" },
-            --   dockerfile = { "hadolint" },
-            --   inko = { "inko" },
-            --   janet = { "janet" },
-            --   json = { "jsonlint" },
-            --   markdown = { "vale" },
-            --   rst = { "vale" },
-            --   ruby = { "ruby" },
-            --   terraform = { "tflint" },
-            --   text = { "vale" }
-            -- }
-            --
-            -- You can disable the default linters by setting their filetypes to nil:
-            -- lint.linters_by_ft['clojure'] = nil
-            -- lint.linters_by_ft['dockerfile'] = nil
-            -- lint.linters_by_ft['inko'] = nil
-            -- lint.linters_by_ft['janet'] = nil
-            -- lint.linters_by_ft['json'] = nil
-            -- lint.linters_by_ft['markdown'] = nil
-            -- lint.linters_by_ft['rst'] = nil
-            -- lint.linters_by_ft['ruby'] = nil
-            -- lint.linters_by_ft['terraform'] = nil
-            -- lint.linters_by_ft['text'] = nil
+            -- to change args, first add in all of the nvim-lint default args then add/remove your own
+            -- find defaults here: https://github.com/mfussenegger/nvim-lint/tree/master/lua/lint/linters
+            lint.linters.mypy.args = {
+
+                -- these 2 lines are specific to how I develop in python, I always use a virtual env called `env`
+                -- and I store my global mypy config in my home directory
+                "--python-executable",
+                ".venv/bin/python3",
+
+                "--show-column-numbers",
+                "--show-error-end",
+                "--hide-error-context",
+                "--no-color-output",
+                "--no-error-summary",
+                "--no-pretty",
+            }
+
+            lint.linters.ruff.args = {
+                "check",
+                "--force-exclude",
+                "--quiet",
+                "--stdin-filename",
+                vim.api.nvim_buf_get_name(0),
+                "--no-fix",
+                "--output-format",
+                "json",
+                "-",
+            }
+
+            lint.linters.rubocop.parser = function(output)
+                local severity_map = {
+                    ["fatal"] = vim.diagnostic.severity.ERROR,
+                    ["error"] = vim.diagnostic.severity.ERROR,
+                    ["warning"] = vim.diagnostic.severity.WARN,
+                    ["convention"] = vim.diagnostic.severity.HINT,
+                    ["refactor"] = vim.diagnostic.severity.INFO,
+                    ["info"] = vim.diagnostic.severity.INFO,
+                }
+                local diagnostics = {}
+                local decoded = vim.json.decode(output)
+
+                if not decoded.files[1] then
+                    return diagnostics
+                end
+
+                local offences = decoded.files[1].offenses
+
+                for _, off in pairs(offences) do
+                    local start_line = off.location.start_line - 1
+                    local start_col = off.location.start_column - 1
+
+                    -- If the offense spans multiple lines, limit it to the first line
+                    local is_multiline = off.location.last_line ~= off.location.start_line
+                    local end_line = start_line
+                    local end_col = is_multiline and -1 or off.location.last_column
+
+                    table.insert(diagnostics, {
+                        source = "rubocop",
+                        lnum = start_line,
+                        col = start_col,
+                        end_lnum = end_line,
+                        end_col = end_col,
+                        severity = severity_map[off.severity],
+                        message = off.message,
+                        code = off.cop_name,
+                    })
+                end
+
+                return diagnostics
+            end
 
             -- Create autocommand which carries out the actual linting
             -- on the specified events.

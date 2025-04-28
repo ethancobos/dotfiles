@@ -61,4 +61,5 @@ vim.opt.scrolloff = 10
 -- See `:help 'confirm'`
 vim.opt.confirm = true
 
--- vim: ts=2 sts=2 sw=2 et
+-- rounded borders on popups
+vim.o.winborder = "rounded"

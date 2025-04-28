@@ -1,34 +1,40 @@
 -- This is where i give lazy all of my plugin configurations
 require("lazy").setup({
-    "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+    require("plugins.plenary"),
 
-    require("kickstart/plugins/gitsigns"),
+    require("plugins.ui"),
 
-    require("kickstart/plugins/which-key"),
+    require("plugins.base46"),
 
-    require("kickstart/plugins/telescope"),
+    require("plugins.nvim-tree-devicons"),
 
-    require("kickstart/plugins/lspconfig"),
+    require("plugins.nvim-tree"),
 
-    require("kickstart/plugins/conform"),
+    require("plugins.which-key"),
 
-    require("kickstart/plugins/blink-cmp"),
+    require("plugins.conform"),
 
-    require("kickstart/plugins/tokyonight"),
+    require("plugins.gitsigns"),
 
-    require("kickstart/plugins/todo-comments"),
+    require("plugins.telescope"),
 
-    require("kickstart/plugins/mini"),
+    require("plugins.blink-cmp"),
 
-    require("kickstart/plugins/treesitter"),
+    require("plugins.tokyonight"),
 
-    require("kickstart.plugins.debug"),
+    require("plugins.mini"),
 
-    require("kickstart.plugins.indent_line"),
+    require("plugins.treesitter"),
 
-    require("kickstart.plugins.lint"),
+    require("plugins.indent_line"),
 
-    require("kickstart.plugins.autopairs"),
+    require("plugins.lint"),
 
-    require("kickstart.plugins.neo-tree"),
+    require("plugins.autopairs"),
+
+    require("plugins.vim-tmux-navigator"),
+
+    require("plugins.trouble"),
+
+    require("plugins.lazydev"),
 })

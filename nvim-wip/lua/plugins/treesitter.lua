@@ -3,10 +3,16 @@ return {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         main = "nvim-treesitter.configs", -- Sets main module to use for opts
-        -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
         opts = {
             ensure_installed = {
+                "python",
                 "bash",
+                "java",
+                "ruby",
+                "rust",
+                "printf",
+                "toml",
+                "yaml",
                 "c",
                 "diff",
                 "html",
