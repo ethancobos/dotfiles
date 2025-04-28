@@ -5,23 +5,5 @@ source /home/ecobos/.brazil_completion/zsh_completion
 
 export BRAZIL_WORKSPACE_DEFAULT_LAYOUT=short
 
-export AUTO_TITLE_SCREENS="NO"
-
-export PROMPT="
-%{$fg[white]%}(%D %*) <%?> [%~] $program %{$fg[default]%}
-%{$fg[cyan]%}%m %#%{$fg[default]%} "
-
-export RPROMPT=
-
-set-title() {
-    echo -e "\e]0;$*\007"
-}
-
-ssh() {
-    set-title $*;
-    /usr/bin/ssh -2 $*;
-    set-title $HOST;
-}
-
 # Enables autocompletion for the ddb command - Installed by MechanicBigBirdCli
 [ -f "/apollo/env/MechanicBigBirdCli/bin/mechanic-autocomplete.sh" ] && source "/apollo/env/MechanicBigBirdCli/bin/mechanic-autocomplete.sh"
