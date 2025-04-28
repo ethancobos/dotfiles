@@ -1,6 +1,6 @@
 -- Work in progress
 
-local utils = require("configs.utils")
+local amazon = require("utils.amazon")
 
 -- to cache some of the data calculated below
 local cache_vars = {}
@@ -28,7 +28,7 @@ local get_jdtls_paths = function()
 end
 
 local jdtls_on_attach = function(_, _)
-    utils.bemol()
+    amazon.bemol()
 end
 
 local jdtls_setup = function()

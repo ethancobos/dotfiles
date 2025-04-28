@@ -1,4 +1,4 @@
-local utils = require("configs.utils")
+local amazon = require("utils.amazon")
 
 return {
     cmd = { "ruby-lsp" },
@@ -32,7 +32,7 @@ return {
             },
         },
         indexing = {
-            includedPatterns = utils.get_bemol_farms_if_exists(".solargraph.yml"),
+            includedPatterns = amazon.get_bemol_farms_if_exists(".solargraph.yml"),
         },
         -- formatter = "standard",
         -- linters = {
