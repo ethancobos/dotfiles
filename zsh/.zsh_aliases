@@ -42,6 +42,7 @@ alias ls="ls -a --color"
 
 # vim
 alias vim="nvim"
+alias nvim-wip='NVIM_APPNAME="nvim-wip" nvim'
 
 # aliases for editing and sourcing configuration files
 alias vz="vim ~/.zshrc"
