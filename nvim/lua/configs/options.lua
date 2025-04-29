@@ -27,6 +27,7 @@ o.mouse = "a"
 o.number = true
 o.numberwidth = 2
 o.ruler = false
+opt.relativenumber = true
 
 -- disable nvim intro
 opt.shortmess:append("sI")
