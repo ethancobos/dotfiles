@@ -32,6 +32,10 @@ return {
             },
         },
         indexing = {
+            excludedPatterns = {
+                "**/build/**",
+                "**/tmp/**",
+            },
             includedPatterns = amazon.get_bemol_farms_if_exists(".solargraph.yml"),
         },
         -- formatter = "standard",
