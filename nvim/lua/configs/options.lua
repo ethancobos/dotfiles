@@ -3,7 +3,7 @@ local o = vim.o
 local g = vim.g
 
 -------------------------------------- options ------------------------------------------
-
+o.winborder = 'rounded'
 o.laststatus = 3
 o.showmode = false
 

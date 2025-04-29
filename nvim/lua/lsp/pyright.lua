@@ -18,6 +18,11 @@ local function set_python_path(path)
     end
 end
 
+local function set_python_path_on_init()
+    -- Attempt to find a python binary at the given location
+    set_python_path(".venv/bin/python3")
+end
+
 return {
     cmd = { "pyright-langserver", "--stdio" },
     filetypes = { "python" },
@@ -39,12 +44,10 @@ return {
                 ignore = { "*" },         -- Using Ruff
                 typeCheckingMode = "off", -- Using mypy
             },
+            pythonPath = set_python_path_on_init()
         },
     },
     on_attach = function(_, bufnr)
-        -- Attempt to find a python binary at the given location
-        set_python_path(".venv/bin/python3")
-
         -- for if you want to manually change the python path
         vim.api.nvim_buf_create_user_command(bufnr, "LspPyrightSetPythonPath", set_python_path, {
             desc = "Reconfigure pyright with the provided python path",
