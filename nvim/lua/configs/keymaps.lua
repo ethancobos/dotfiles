@@ -73,7 +73,7 @@ map({ "n", "x" }, "<leader>fm", function()
 end, { desc = "general format file" })
 
 -- ╭──────────────────────────────────────────────╮
--- │                     LSP                      │
+-- │                 Global LSP                   │
 -- ╰──────────────────────────────────────────────╯
 
 map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "LSP diagnostic loclist" })
@@ -97,13 +97,6 @@ map("n", "<leader>x", function()
 end, { desc = "buffer close" })
 
 -- ╭──────────────────────────────────────────────╮
--- │                  Comments                    │
--- ╰──────────────────────────────────────────────╯
-
-map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
-map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
-
--- ╭──────────────────────────────────────────────╮
 -- │                  NvimTree                    │
 -- ╰──────────────────────────────────────────────╯
 
@@ -117,34 +110,6 @@ map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window"
 map("n", "<leader>th", function()
     require("nvchad.themes").open()
 end, { desc = "telescope nvchad themes" })
-
--- ╭──────────────────────────────────────────────╮
--- │                   Terminal                   │
--- ╰──────────────────────────────────────────────╯
-
-map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
-
--- new terminals
-map("n", "<leader>h", function()
-    require("nvchad.term").new({ pos = "sp" })
-end, { desc = "terminal new horizontal term" })
-
-map("n", "<leader>v", function()
-    require("nvchad.term").new({ pos = "vsp" })
-end, { desc = "terminal new vertical term" })
-
--- toggleable
-map({ "n", "t" }, "<A-v>", function()
-    require("nvchad.term").toggle({ pos = "vsp", id = "vtoggleTerm" })
-end, { desc = "terminal toggleable vertical term" })
-
-map({ "n", "t" }, "<A-h>", function()
-    require("nvchad.term").toggle({ pos = "sp", id = "htoggleTerm" })
-end, { desc = "terminal toggleable horizontal term" })
-
-map({ "n", "t" }, "<A-i>", function()
-    require("nvchad.term").toggle({ pos = "float", id = "floatTerm" })
-end, { desc = "terminal toggle floating term" })
 
 -- ╭──────────────────────────────────────────────╮
 -- │                  WhichKey                    │
