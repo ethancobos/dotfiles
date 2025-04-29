@@ -95,6 +95,8 @@ https://github.com/astral-sh/ruff-lsp
 
 Where I keep my LSP configuration files
 
+    ln -s ~/dotfiles/ruby/.rubocop.yml ~/
+
 ### Links
 https://github.com/Shopify/ruby-lsp
 
