@@ -18,11 +18,6 @@ return {
                     vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
                 end
 
-                -- ruby-lsp currently cannot handle square brackets in directory names which brazil creates
-                -- in the build folder so for now we will just get rid of the convenience symlink
-                local client = vim.lsp.get_client_by_id(event.data.client_id)
-                amazon.remove_ruby_build_symlink_if_exists(client)
-
                 -- Rename the variable under your cursor.
                 --  Most Language Servers support renaming across files, etc.
                 map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -88,6 +83,8 @@ return {
             if client.supports_method("textDocument/semanticTokens") then
                 client.server_capabilities.semanticTokensProvider = nil
             end
+            -- ruby-lsp currently cannot handle square brackets in directory names which brazil creates
+            -- in the build folder so for now we will just get rid of the convenience symlink
             amazon.remove_ruby_build_symlink_if_exists(client)
         end
 
