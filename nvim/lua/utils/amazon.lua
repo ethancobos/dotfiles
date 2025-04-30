@@ -1,3 +1,5 @@
+local helpers = require("utils.helpers")
+
 local M = {}
 
 -- find element v of l satisfying f(v)
@@ -56,6 +58,13 @@ function M.get_bemol_farms_if_exists(filepath)
     end
 
     return includes
+end
+
+function M.remove_ruby_build_symlink_if_exists(client)
+    -- ensures that is only removes if it is a link
+    if client and client.name == "ruby-lsp" and helpers.link_exists("build") then
+        os.remove("build")
+    end
 end
 
 return M

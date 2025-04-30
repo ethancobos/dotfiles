@@ -1,3 +1,6 @@
+local helpers = require("utils.helpers")
+local amazon = require("utils.amazon")
+
 return {
     "neovim/nvim-lspconfig",
     event = "User FilePost",
@@ -14,6 +17,11 @@ return {
                     mode = mode or 'n'
                     vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
                 end
+
+                -- ruby-lsp currently cannot handle square brackets in directory names which brazil creates
+                -- in the build folder so for now we will just get rid of the convenience symlink
+                local client = vim.lsp.get_client_by_id(event.data.client_id)
+                amazon.remove_ruby_build_symlink_if_exists(client)
 
                 -- Rename the variable under your cursor.
                 --  Most Language Servers support renaming across files, etc.
@@ -80,6 +88,7 @@ return {
             if client.supports_method("textDocument/semanticTokens") then
                 client.server_capabilities.semanticTokensProvider = nil
             end
+            amazon.remove_ruby_build_symlink_if_exists(client)
         end
 
         vim.lsp.config("*", { capabilities = capabilities, on_init = on_init })
