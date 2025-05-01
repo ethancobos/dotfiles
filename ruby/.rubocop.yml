@@ -1,14 +1,17 @@
+### Layout
 Layout/LineLength:
   Enabled: false
 
+### Metrics
 Metrics/MethodLength:
   Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
 Metrics/ClassLength:
   Enabled: false
 
+### Style
 Style/StringLiterals:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Documentation:
   Enabled: false

@@ -11,7 +11,7 @@ fi
 # add homebrew stuff to our path
 if [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]] then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-elif [[ -f "/opt/homebrew/bin/brew" ]] then
+elif [[ -f /opt/homebrew/bin/brew ]] then
     eval "$(/opt/homebrew/bin/brew shellenv)"
     export PATH=$HOME/opt/homebrew/opt/python@3.13/libexec/bin:$PATH
 fi

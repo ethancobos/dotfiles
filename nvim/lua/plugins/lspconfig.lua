@@ -95,7 +95,7 @@ return {
         vim.lsp.enable({
             "lua-language-server",
             "pyright",
-            "ruby-lsp",
+            -- "ruby-lsp",
             -- "jdtls",
         })
     end,

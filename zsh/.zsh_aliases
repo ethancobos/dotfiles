@@ -50,6 +50,7 @@ alias sz="source ~/.zshrc"
 alias st="tmux source ~/.tmux.conf"
 
 # tmux
+alias trs="tmux rename-session"
 alias tat="tmux attach -t"
 alias tst="tmux switch -t"
 alias tks="tmux kill-session"
