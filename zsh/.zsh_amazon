@@ -1,9 +1,0 @@
-# Set up mise for runtime management
-eval "$(/home/ecobos/.local/bin/mise activate zsh)"
-source ~/.local/share/mise/completions.zsh
-source /home/ecobos/.brazil_completion/zsh_completion
-
-export BRAZIL_WORKSPACE_DEFAULT_LAYOUT=short
-
-# Enables autocompletion for the ddb command - Installed by MechanicBigBirdCli
-[ -f "/apollo/env/MechanicBigBirdCli/bin/mechanic-autocomplete.sh" ] && source "/apollo/env/MechanicBigBirdCli/bin/mechanic-autocomplete.sh"
