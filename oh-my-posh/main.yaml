@@ -24,7 +24,7 @@ blocks:
           background: transparent
           type: session
           style: plain
-          template: '{{ if .SSHSession }}{{ end }}{{ .UserName }}@{{ .HostName }} '
+          template: '{{ if .SSHSession }}{{ .UserName }}@{{ .HostName }}{{ end }} '
         - properties:
             cache_duration: none
             style: full

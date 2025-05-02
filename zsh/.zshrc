@@ -50,6 +50,9 @@ export PATH=$HOME/.local/bin/general:$PATH
 ## │                Completions                   │
 ## ╰──────────────────────────────────────────────╯
 
+# Load completions
+autoload -Uz compinit && compinit
+
 # Work only completions
 if $ON_WORK_COMPUTER; then   
     source ~/.local/share/mise/completions.zsh
@@ -64,10 +67,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-
-# Load completions
-autoload -Uz compinit && compinit
-zinit cdreplay -q
 
 ## ╭──────────────────────────────────────────────╮
 ## │                   Zinit                      │
