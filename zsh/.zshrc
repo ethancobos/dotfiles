@@ -50,6 +50,17 @@ export PATH=$HOME/.local/bin/general:$PATH
 ## │                Completions                   │
 ## ╰──────────────────────────────────────────────╯
 
+# Completion styling
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+
+# for some reason this won't work on work box
+if ! $ON_WORK_COMPUTER; then   
+    zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -a --color $realpath'
+fi
+
+
 # Load completions
 autoload -Uz compinit && compinit
 
@@ -61,12 +72,6 @@ if $ON_WORK_COMPUTER; then
 
     [ -f "/apollo/env/MechanicBigBirdCli/bin/mechanic-autocomplete.sh" ] && source "/apollo/env/MechanicBigBirdCli/bin/mechanic-autocomplete.sh"
 fi
-
-# Completion styling
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -a --color $realpath'
 
 ## ╭──────────────────────────────────────────────╮
 ## │                   Zinit                      │
