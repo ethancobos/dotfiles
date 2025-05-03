@@ -95,13 +95,13 @@ local lsp_settings = {
                 enabled = "all",
             },
         },
-        -- format = {
-        --     enabled = true,
-        --     settings = {
-        --         profile = 'DdbLogService',
-        --         url = '/home/ecobos/work-dotfiles/LogProducer/DdbLogService.xml'
-        --     }
-        -- },
+        format = {
+            enabled = false,
+            settings = {
+                profile = 'DdbLogService',
+                url = '/home/ecobos/work-dotfiles/LogProducer/DdbLogService.xml'
+            }
+        },
     },
     signatureHelp = {
         enabled = true,
