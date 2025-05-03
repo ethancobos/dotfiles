@@ -1,4 +1,3 @@
-local helpers = require("utils.helpers")
 local amazon = require("utils.amazon")
 
 return {
@@ -17,6 +16,8 @@ return {
                     mode = mode or 'n'
                     vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
                 end
+
+                local client = vim.lsp.get_client_by_id(event.data.client_id)
 
                 -- Rename the variable under your cursor.
                 --  Most Language Servers support renaming across files, etc.
@@ -54,6 +55,17 @@ return {
                 --  Useful when you're not sure what type a variable is and you want to see
                 --  the definition of its *type*, not where it was *defined*.
                 map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+
+                if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_codeLens, event.buf) then
+                    vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+                        callback = function(args)
+                            vim.lsp.codelens.refresh({ bufnr = args.buf })
+                        end
+                    })
+                end
+
+                -- To detect other packages in our workspace
+                amazon.bemol()
             end,
         })
 
@@ -92,11 +104,12 @@ return {
         vim.lsp.config("lua-language-server", require("lsp.lua-language-server"))
         vim.lsp.config("pyright", require("lsp.pyright"))
         vim.lsp.config("ruby-lsp", require("lsp.ruby-lsp"))
+        vim.lsp.config("jdtls", require("lsp.jdtls"))
         vim.lsp.enable({
             "lua-language-server",
             "pyright",
             -- "ruby-lsp",
-            -- "jdtls",
+            "jdtls",
         })
     end,
 }
