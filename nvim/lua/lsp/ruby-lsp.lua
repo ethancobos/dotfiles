@@ -3,7 +3,7 @@ local amazon = require("utils.amazon")
 return {
     cmd = { "ruby-lsp" },
     filetypes = { "ruby", "eruby" },
-    root_markers = { "Gemfile", ".git" },
+    root_markers = { "packageInfo" }, -- ruby-lsp does not support multi-root ws
     init_options = {
         enabledFeatures = {
             codeActions = true,
@@ -32,12 +32,8 @@ return {
             },
         },
         indexing = {
-            includedPatterns = amazon.get_bemol_farms_if_exists(".solargraph.yml"),
+            includedPatterns = amazon.get_bemol_farms_if_exists(),
         },
-        -- formatter = "standard",
-        -- linters = {
-        --     "standard",
-        -- },
         experimentalFeaturesEnabled = false,
     },
 }

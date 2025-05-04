@@ -64,8 +64,10 @@ return {
                     })
                 end
 
-                -- To detect other packages in our workspace
-                amazon.bemol()
+                -- Rub-lsp does not support multi-root workspaces
+                if client and client.name ~= "ruby-lsp" then
+                    amazon.add_all_ws_folder_bemol()
+                end
             end,
         })
 
@@ -97,7 +99,7 @@ return {
             end
             -- ruby-lsp currently cannot handle square brackets in directory names which brazil creates
             -- in the build folder so for now we will just get rid of the convenience symlink
-            amazon.remove_ruby_build_symlink_if_exists(client)
+            -- amazon.remove_ruby_build_symlink_if_exists(client)
         end
 
         vim.lsp.config("*", { capabilities = capabilities, on_init = on_init })
@@ -108,7 +110,7 @@ return {
         vim.lsp.enable({
             "lua-language-server",
             "pyright",
-            -- "ruby-lsp",
+            "ruby-lsp",
             "jdtls",
         })
     end,
