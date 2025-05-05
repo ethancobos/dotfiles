@@ -65,7 +65,7 @@ return {
                 end
 
                 -- Rub-lsp does not support multi-root workspaces
-                if client and client.name ~= "ruby-lsp" then
+                if client and client.name ~= "ruby-lsp" and client.name ~= "yaml-language-server" then
                     amazon.add_all_ws_folder_bemol()
                 end
             end,
@@ -107,11 +107,13 @@ return {
         vim.lsp.config("pyright", require("lsp.pyright"))
         vim.lsp.config("ruby-lsp", require("lsp.ruby-lsp"))
         vim.lsp.config("jdtls", require("lsp.jdtls"))
+        vim.lsp.config("yaml-language-server", require("lsp.yaml-language-server"))
         vim.lsp.enable({
             "lua-language-server",
             "pyright",
             "ruby-lsp",
             "jdtls",
+            "yaml-language-server"
         })
     end,
 }
