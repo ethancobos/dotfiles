@@ -41,7 +41,7 @@ end
 -- but unfortunately ruby-lsp breaks when you build an lpt package because the build folder
 -- has directories with square brackets in the name and the URI parser freaks out and yells
 -- about a "bad component"
-function M.get_bemol_farms_if_exists()
+function M.get_bemol_farms_for_all_packages()
     local ws_folders_lsp = M.get_bemol_ws_folders()
     local ruby_farms = {}
 
@@ -62,6 +62,25 @@ function M.get_bemol_farms_if_exists()
                     end
                 end
             end
+        end
+    end
+    return ruby_farms
+end
+
+function M.get_bemol_farms_for_single_package()
+    local filepath = ".solargraph.yml"
+    local ruby_farms = {}
+
+    if vim.fn.filereadable(filepath) == 0 then
+        return {}
+    end
+
+    local lines = vim.fn.readfile(filepath)
+
+    for _, line in ipairs(lines) do
+        local path = string.match(line, "%- (.+)")
+        if path then
+            table.insert(ruby_farms, vim.trim(path))
         end
     end
     return ruby_farms

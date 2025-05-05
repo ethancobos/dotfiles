@@ -3,7 +3,7 @@ local amazon = require("utils.amazon")
 return {
     cmd = { "ruby-lsp" },
     filetypes = { "ruby", "eruby" },
-    root_markers = { "packageInfo" }, -- ruby-lsp does not support multi-root ws
+    root_markers = { "Config", ".git" },
     init_options = {
         enabledFeatures = {
             codeActions = true,
@@ -32,7 +32,7 @@ return {
             },
         },
         indexing = {
-            includedPatterns = amazon.get_bemol_farms_if_exists(),
+            includedPatterns = amazon.get_bemol_farms_for_single_package(),
         },
         experimentalFeaturesEnabled = false,
     },
