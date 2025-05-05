@@ -2,8 +2,8 @@
 
 # Check if a directory is provided as an argument
 if [ -z "$1" ]; then
-  echo "Usage: $0 <directory>"
-  exit 1
+    echo "Usage: $0 <directory>"
+    exit 1
 fi
 
 # Use the provided directory as the target
@@ -12,8 +12,8 @@ SRC_ROOT="$WS_ROOT"/src
 
 # Ensure the target is a valid directory
 if [ ! -d "$WS_ROOT" ]; then
-  echo "Error: '$WS_ROOT' is not a directory."
-  exit 1
+    echo "Error: '$WS_ROOT' is not a directory."
+    exit 1
 fi
 
 # Get the base name of the current working directory
@@ -22,8 +22,8 @@ SESSION_NAME=$(basename "$WS_ROOT")
 # Check if a tmux session with this name already exists
 tmux has-session -t "$SESSION_NAME" 2>/dev/null
 if [ $? -eq 0 ]; then
-  tmux attach-session -t "$SESSION_NAME"
-  exit 0
+    tmux attach-session -t "$SESSION_NAME"
+    exit 0
 fi
 
 # Create a new tmux session
@@ -34,25 +34,28 @@ tmux rename-window -t "$SESSION_NAME:0" "workspace root"
 
 # Loop through subdirectories of the target directory and create a window for each
 for dir in "$SRC_ROOT"/*/; do
-  # Skip if no subdirectories are found
-  if [ ! -d "$dir" ]; then
-    continue
-  fi
+    # Skip if no subdirectories are found
+    if [ ! -d "$dir" ]; then
+        continue
+    fi
 
-  # Remove the trailing slash from the directory name
-  dir_name=$(basename "$dir")
+    # Remove the trailing slash from the directory name
+    dir_name=$(basename "$dir")
 
-  # Create a new window named after the directory
-  tmux new-window -t "$SESSION_NAME:" -n "$dir_name" -c "$dir"
+    # Create a new window named after the directory
+    tmux new-window -t "$SESSION_NAME:" -n "$dir_name" -c "$dir"
 
-  # split the window in half
-  tmux split-window -h -t "$SESSION_NAME:$dir_name" -c "$dir"
+    # split the window in half
+    tmux split-window -h -t "$SESSION_NAME:$dir_name" -c "$dir"
 
-  # make the left pane take up two thirds of the screen
-  tmux resize-pane -t "$SESSION_NAME:$dir_name.0" -R $(($(tput cols) / 3))
+    # make the left pane take up two thirds of the screen
+    tmux resize-pane -t "$SESSION_NAME:$dir_name.0" -R $(($(tput cols) / 3))
 
-  # Open vim in the left pane (pane 0)
-  tmux send-keys -t "$SESSION_NAME:$dir_name.0" 'vim' C-m
+    # split the right pane in half vertically
+    tmux split-window -v -t "$SESSION_NAME:$dir_name.1" -c "$dir"
+
+    # Open vim in the left pane (pane 0)
+    tmux send-keys -t "$SESSION_NAME:$dir_name.0" 'vim' C-m
 done
 
 # Attach to the newly created session
