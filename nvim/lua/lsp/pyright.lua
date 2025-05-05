@@ -44,7 +44,7 @@ return {
                 ignore = { "*" },         -- Using Ruff
                 typeCheckingMode = "off", -- Using mypy
             },
-            pythonPath = set_python_path_on_init()
+            -- pythonPath = set_python_path_on_init()
         },
     },
     on_attach = function(_, bufnr)

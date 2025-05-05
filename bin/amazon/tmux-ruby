@@ -30,7 +30,7 @@ fi
 tmux new-session -d -s "$SESSION_NAME" -c "$WS_ROOT"
 
 # Configure the first window (default window)
-tmux rename-window -t "$SESSION_NAME:0" "ws"
+tmux rename-window -t "$SESSION_NAME:0" "workspace root"
 
 # Loop through subdirectories of the target directory and create a window for each
 for dir in "$SRC_ROOT"/*/; do
@@ -44,7 +44,16 @@ for dir in "$SRC_ROOT"/*/; do
 
   # Create a new window named after the directory
   tmux new-window -t "$SESSION_NAME:" -n "$dir_name" -c "$dir"
+
+  # split the window in half
+  tmux split-window -h -t "$SESSION_NAME:$dir_name" -c "$dir"
+
+  # make the left pane take up two thirds of the screen
+  tmux resize-pane -t "$SESSION_NAME:$dir_name.0" -R $(($(tput cols) / 3))
+
+  # Open vim in the left pane (pane 0)
+  tmux send-keys -t "$SESSION_NAME:$dir_name.0" 'vim' C-m
 done
 
 # Attach to the newly created session
-tmux attach-session -t "$SESSION_NAME"
+tmux attach-session -t "$SESSION_NAME:0"
