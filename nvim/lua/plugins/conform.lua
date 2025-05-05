@@ -21,6 +21,7 @@ return {
         opts = {
             formatters_by_ft = {
                 lua = { "stylua" },
+                bash = { "shfmt" }
                 -- python = { "ruff_format", "ruff_organize_imports" },
                 -- ruby = { "rubocop" },
             },

@@ -1,4 +1,10 @@
 local amazon = require("utils.amazon")
+local helpers = require("utils.helpers")
+
+-- if a language server is supported in bemol and can support a multi-root ws, add it here
+local bemol_multi_root_lsp = {
+    "jdtls"
+}
 
 return {
     "neovim/nvim-lspconfig",
@@ -64,8 +70,8 @@ return {
                     })
                 end
 
-                -- Rub-lsp does not support multi-root workspaces
-                if client and client.name ~= "ruby-lsp" and client.name ~= "yaml-language-server" then
+                -- Add all brazil ws packages as ws roots if lsp/bemol can handle it
+                if client and helpers.find(bemol_multi_root_lsp, client.name) then
                     amazon.add_all_ws_folder_bemol()
                 end
             end,
@@ -108,12 +114,14 @@ return {
         vim.lsp.config("ruby-lsp", require("lsp.ruby-lsp"))
         vim.lsp.config("jdtls", require("lsp.jdtls"))
         vim.lsp.config("yaml-language-server", require("lsp.yaml-language-server"))
+        vim.lsp.config("bash-language-server", require("lsp.bash-language-server"))
         vim.lsp.enable({
             "lua-language-server",
             "pyright",
             "ruby-lsp",
             "jdtls",
-            "yaml-language-server"
+            "yaml-language-server",
+            "bash-language-server"
         })
     end,
 }
