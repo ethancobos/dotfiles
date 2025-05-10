@@ -145,7 +145,7 @@ return {
     cmd = cmd,
     filetypes = { 'java' },
     settings = lsp_settings,
-    root_markers = { "Config", ".git" },
+    root_markers = { "packageInfo" },
     flags = {
         allow_incremental_sync = true,
     },
