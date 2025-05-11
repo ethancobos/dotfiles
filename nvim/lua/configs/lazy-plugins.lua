@@ -18,10 +18,10 @@ require("lazy").setup({
     require("plugins.nvim-lint"),
     require("plugins.vim-tmux-navigator"),
     require("plugins.trouble"),
+    require("plugins.oil"),
 }, {
     defaults = { lazy = true },
     install = { colorscheme = { "nvchad" } },
-
     ui = {
         icons = {
             ft = "",
@@ -30,7 +30,6 @@ require("lazy").setup({
             not_loaded = "",
         },
     },
-
     performance = {
         rtp = {
             disabled_plugins = {

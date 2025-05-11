@@ -18,7 +18,6 @@ map("n", "<leader>ch", "<cmd>NvCheatsheet<CR>", { desc = "toggle nvcheatsheet" }
 
 map("i", "<C-b>", "<ESC>^i", { desc = "move beginning of line" })
 map("i", "<C-e>", "<End>", { desc = "move end of line" })
--- change these to tmux counterpart
 map("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { desc = "window left" })
 map("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { desc = "window down" })
 map("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { desc = "window up" })
@@ -120,3 +119,9 @@ map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "whichkey all keymaps" })
 map("n", "<leader>wk", function()
     vim.cmd("WhichKey " .. vim.fn.input("WhichKey: "))
 end, { desc = "whichkey query lookup" })
+
+-- ╭──────────────────────────────────────────────╮
+-- │                    Oil                       │
+-- ╰──────────────────────────────────────────────╯
+
+map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })

@@ -6,6 +6,8 @@ local g = vim.g
 o.winborder = 'rounded'
 o.laststatus = 3
 o.showmode = false
+o.swapfile = false
+
 
 o.clipboard = "unnamedplus"
 o.cursorline = true

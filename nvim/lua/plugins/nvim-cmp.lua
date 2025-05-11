@@ -3,8 +3,8 @@ return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
-        require("plugins.dependencies.LuaSnip"),
-        require("plugins.dependencies.nvim-autopairs"),
+        require("plugins.LuaSnip"),
+        require("plugins.nvim-autopairs"),
         -- cmp sources plugins
         {
             "saadparwaiz1/cmp_luasnip",
