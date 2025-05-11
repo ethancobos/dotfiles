@@ -3,7 +3,6 @@ local amazon = require("utils.amazon")
 return {
     cmd = { "ruby-lsp" },
     filetypes = { "ruby", "eruby" },
-    root_markers = { "Config", ".git" },
     init_options = {
         enabledFeatures = {
             codeActions = true,

@@ -1,3 +1,9 @@
+local amazon = require("utils.amazon")
+
+-- ╭──────────────────────────────────────────────╮
+-- │                   Helpers                    │
+-- ╰──────────────────────────────────────────────╯
+
 -- to cache some of the data calculated below
 local cache_vars = {}
 local jdtls_version = "1.46.1"
@@ -29,9 +35,12 @@ local project_path = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h")
 local project_path_hash = string.gsub(project_path, "[/\\:+-]", "_")
 local data_dir = path.data_dir .. project_path_hash
 
+-- ╭──────────────────────────────────────────────╮
+-- │                   Command                    │
+-- ╰──────────────────────────────────────────────╯
+
 local cmd = {
     path.jdtls_bin,
-    -- could also be '/usr/lib/jvm/java-21-amazon-corretto/bin/java',
 
     "-XX:+UseParallelGC",                  -- Better performance for multi-core systems
     "-XX:GCTimeRatio=4",                   -- Spend less time on GC
@@ -64,7 +73,27 @@ local cmd = {
     data_dir,
 }
 
-local lsp_settings = {
+-- ╭──────────────────────────────────────────────╮
+-- │                 Filetypes                    │
+-- ╰──────────────────────────────────────────────╯
+
+local filetypes = {
+    'java'
+}
+
+-- ╭──────────────────────────────────────────────╮
+-- │              Workspace Folders               │
+-- ╰──────────────────────────────────────────────╯
+
+local on_init = function(_, _)
+    amazon.add_all_ws_folder_bemol()
+end
+
+-- ╭──────────────────────────────────────────────╮
+-- │                   Settings                   │
+-- ╰──────────────────────────────────────────────╯
+
+local settings = {
     java = {
         eclipse = {
             downloadSources = true,
@@ -141,15 +170,31 @@ local lsp_settings = {
     },
 }
 
+-- ╭──────────────────────────────────────────────╮
+-- │                    Flags                     │
+-- ╰──────────────────────────────────────────────╯
+
+local flags = {
+    allow_incremental_sync = true,
+}
+
+-- ╭──────────────────────────────────────────────╮
+-- │                 Init Options                 │
+-- ╰──────────────────────────────────────────────╯
+
+local init_options = {
+    bundles = path.bundles,
+}
+
+-- ╭──────────────────────────────────────────────╮
+-- │                   Config                     │
+-- ╰──────────────────────────────────────────────╯
+
 return {
     cmd = cmd,
-    filetypes = { 'java' },
-    settings = lsp_settings,
-    root_markers = { "packageInfo" },
-    flags = {
-        allow_incremental_sync = true,
-    },
-    init_options = {
-        bundles = path.bundles,
-    },
+    filetypes = filetypes,
+    on_init = on_init,
+    settings = settings,
+    flags = flags,
+    init_options = init_options
 }
