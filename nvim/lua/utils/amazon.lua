@@ -33,40 +33,7 @@ function M.add_all_ws_folder_bemol()
     end
 end
 
--- This function is doing a lot. Bemol only supports solargraph for ruby development, but
--- solargraph sucks. Instead what we can do is get the ruby farms that bemol generates out
--- of each packages .solargraph.yml file and pass them to a ruby-lsp instance rooted at
--- the brazil ws root. The reason we do this is because ruby-lsp does not support multi
--- root workspaces like jdtls. Its a very hacky solution that works like 99% of the time.
--- but unfortunately ruby-lsp breaks when you build an lpt package because the build folder
--- has directories with square brackets in the name and the URI parser freaks out and yells
--- about a "bad component"
-function M.get_bemol_farms_for_all_packages()
-    local ws_folders_lsp = M.get_bemol_ws_folders()
-    local ruby_farms = {}
-
-    for _, filepath in ipairs(ws_folders_lsp) do
-        local solargraph = filepath .. "/.solargraph.yml"
-
-        if vim.fn.filereadable(solargraph) == 1 then
-            local lines = vim.fn.readfile(solargraph)
-
-            for _, line in ipairs(lines) do
-                -- Only include bemol farms
-                local path = string.match(line, "%- .*(%.bemol.+)")
-                if path then
-                    local path_trimmed = vim.trim(path)
-
-                    if not helpers.find(ruby_farms, path_trimmed) then
-                        table.insert(ruby_farms, path_trimmed)
-                    end
-                end
-            end
-        end
-    end
-    return ruby_farms
-end
-
+-- parse out the bemol generated ruby farms from the `.solargraph.yml` file
 function M.get_bemol_farms_for_single_package()
     local filepath = ".solargraph.yml"
     local ruby_farms = {}
@@ -86,7 +53,8 @@ function M.get_bemol_farms_for_single_package()
     return ruby_farms
 end
 
-function M.remove_ruby_build_symlink_if_exists(client)
+-- remove build folder link from package directory if there
+function M.remove_package_build_link_if_exists(client)
     -- ensures that is only removes if it is a link
     if client and client.name == "ruby-lsp" and helpers.link_exists("build") then
         os.remove("build")

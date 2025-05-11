@@ -14,12 +14,6 @@ local enabled_servers = {
 }
 
 -- ╭──────────────────────────────────────────────╮
--- │                 User Commands                │
--- ╰──────────────────────────────────────────────╯
-
-vim.api.nvim_create_user_command('LspInfo', ':checkhealth vim.lsp', { desc = 'Alias to `:checkhealth vim.lsp`' })
-
--- ╭──────────────────────────────────────────────╮
 -- │              Diagnostic Config               │
 -- ╰──────────────────────────────────────────────╯
 
@@ -42,6 +36,9 @@ vim.diagnostic.config {
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(event)
+        -- LspInfo
+        vim.api.nvim_create_user_command('LspInfo', ':checkhealth vim.lsp', { desc = 'Alias to `:checkhealth vim.lsp`' })
+
         -- Keymaps
         local map = function(keys, func, desc, mode)
             mode = mode or 'n'
