@@ -1,12 +1,11 @@
 #!/bin/bash
 
 SESSION_NAME="ops"
-WS_ROOT="~/ops/"
+WS_ROOT="$HOME/ops/"
 
-tmux has-session -t "$SESSION_NAME" 2>/dev/null
-if [ $? -eq 0 ]; then
-  tmux attach-session -t "$SESSION_NAME"
-  exit 0
+if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+    tmux attach-session -t "$SESSION_NAME"
+    exit 0
 fi
 
 # Create a new tmux session
