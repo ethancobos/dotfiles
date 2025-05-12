@@ -16,7 +16,10 @@ local severities = {
 -- ╰──────────────────────────────────────────────╯
 
 local args = {
-    "--python-executable", ".venv/bin/python3",
+    -- "--python-executable",
+    -- "put path to excecutable here"
+    "--config-file",
+    "/home/ecobos/dotfiles/python/.mypy.ini",
     "--show-column-numbers",
     "--show-error-end",
     "--hide-error-context",

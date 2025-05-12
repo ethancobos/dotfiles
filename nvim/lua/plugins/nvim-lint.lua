@@ -11,7 +11,9 @@ return {
 
         -- enable linters here
         lint.linters_by_ft = {
-            python = { "mypy", "ruff" },
+            python = {
+                -- "mypy",
+                "ruff" },
             ruby = { "rubocop" },
         }
 
@@ -20,6 +22,7 @@ return {
         linters.ruff = require('linters.ruff')
         linters.rubocop = require('linters.rubocop')
 
+        -- linting autocommand
         vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
             callback = function()
                 lint.try_lint()
