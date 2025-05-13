@@ -1,4 +1,3 @@
-# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 maps:
   host_name:
     dev-dsk-ecobos-2a-959725cb.us-west-2.amazon.com: dev-dsk-2a-959725cb

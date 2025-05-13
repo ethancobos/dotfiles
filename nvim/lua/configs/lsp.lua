@@ -11,6 +11,7 @@ local enabled_servers = {
     "jdtls",
     "yaml-language-server",
     "bash-language-server",
+    "marksman",
 }
 
 -- ╭──────────────────────────────────────────────╮

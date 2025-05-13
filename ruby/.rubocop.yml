@@ -1,14 +1,23 @@
-### Layout
+## ╭──────────────────────────────────────────────╮
+## │                   Layout                     │
+## ╰──────────────────────────────────────────────╯
+
 Layout/LineLength:
   Enabled: false
 
-### Metrics
+## ╭──────────────────────────────────────────────╮
+## │                  Metrics                     │
+## ╰──────────────────────────────────────────────╯
+
 Metrics/MethodLength:
   Enabled: false
 Metrics/ClassLength:
   Enabled: false
 
-### Style
+## ╭──────────────────────────────────────────────╮
+## │                   Style                      │
+## ╰──────────────────────────────────────────────╯
+
 Style/StringLiterals:
   Enabled: false
 Style/FrozenStringLiteralComment:
