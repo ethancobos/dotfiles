@@ -20,7 +20,7 @@ In order to include special work specific configuration, my `.zshrc` has some lo
     touch ~/dotfiles/zsh/.work_mode
 
 ## Fine Grained Setup
-
+ 
 Below are all of the sub-directories of this repo and the commands to soft link all necessary configuration files
 
 ## AeroSpace

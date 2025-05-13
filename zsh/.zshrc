@@ -1,4 +1,12 @@
 ## ╭──────────────────────────────────────────────╮
+## │              Amazon Q Pre-Block              │
+## ╰──────────────────────────────────────────────╯
+
+if $ON_WORK_COMPUTER; then   
+    [[ -f "${HOME}/.local/share/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/.local/share/amazon-q/shell/zshrc.pre.zsh"
+fi
+
+## ╭──────────────────────────────────────────────╮
 ## │            Environment Variables             │
 ## ╰──────────────────────────────────────────────╯
 
@@ -201,3 +209,11 @@ fi
 # Common shell integrations
 eval "$(fzf --zsh)"
 eval "$(oh-my-posh init zsh --config $HOME/dotfiles/oh-my-posh/main.yaml)"
+
+## ╭──────────────────────────────────────────────╮
+## │             Amazon Q Post-Block              │
+## ╰──────────────────────────────────────────────╯
+
+if $ON_WORK_COMPUTER; then
+    [[ -f "${HOME}/.local/share/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/.local/share/amazon-q/shell/zshrc.post.zsh"
+fi
