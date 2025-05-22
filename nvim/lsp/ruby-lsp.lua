@@ -4,13 +4,13 @@ local amazon = require("utils.amazon")
 -- │                   Command                    │
 -- ╰──────────────────────────────────────────────╯
 
-local cmd = { 'ruby-lsp' }
+local cmd = { "ruby-lsp" }
 
 -- ╭──────────────────────────────────────────────╮
 -- │                 Filetypes                    │
 -- ╰──────────────────────────────────────────────╯
 
-local filetypes = { 'ruby', 'eruby' }
+local filetypes = { "ruby", "eruby" }
 
 -- ╭──────────────────────────────────────────────╮
 -- │                 Init Options                 │
@@ -53,8 +53,8 @@ local init_options = {
 -- │                   On Init                    │
 -- ╰──────────────────────────────────────────────╯
 
-local on_init = function(_, _)
-    amazon.remove_package_build_link_if_exists()
+local on_init = function(client, _)
+    amazon.remove_package_build_link_if_exists(client)
 end
 
 -- ╭──────────────────────────────────────────────╮
@@ -65,5 +65,5 @@ return {
     cmd = cmd,
     filetypes = filetypes,
     init_options = init_options,
-    on_init = on_init
+    on_init = on_init,
 }
