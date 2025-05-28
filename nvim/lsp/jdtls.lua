@@ -6,7 +6,7 @@ local amazon = require("utils.amazon")
 
 -- to cache some of the data calculated below
 local cache_vars = {}
-local jdtls_version = "1.46.1"
+local jdtls_version = "1.47.0"
 
 -- Get all of the paths of various things needed for jdtls
 local get_jdtls_paths = function()
@@ -42,14 +42,14 @@ local data_dir = path.data_dir .. project_path_hash
 local cmd = {
     path.jdtls_bin,
 
-    "-XX:+UseParallelGC",                  -- Better performance for multi-core systems
-    "-XX:GCTimeRatio=4",                   -- Spend less time on GC
-    "-XX:AdaptiveSizePolicyWeight=90",     -- Optimize for throughput
+    "-XX:+UseParallelGC", -- Better performance for multi-core systems
+    "-XX:GCTimeRatio=4", -- Spend less time on GC
+    "-XX:AdaptiveSizePolicyWeight=90", -- Optimize for throughput
     "-Dsun.zip.disableMemoryMapping=true", -- Reduce memory pressure
-    "-Xms1g",                              -- Initial heap size
-    "-Xmx8g",                              -- Maximum heap size
-    "-XX:+UseStringDeduplication",         -- Reduce memory usage for string storage
-    "-XX:+OptimizeStringConcat",           -- Optimize string concatenation
+    "-Xms1g", -- Initial heap size
+    "-Xmx8g", -- Maximum heap size
+    "-XX:+UseStringDeduplication", -- Reduce memory usage for string storage
+    "-XX:+OptimizeStringConcat", -- Optimize string concatenation
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -78,7 +78,7 @@ local cmd = {
 -- ╰──────────────────────────────────────────────╯
 
 local filetypes = {
-    'java'
+    "java",
 }
 
 -- ╭──────────────────────────────────────────────╮
@@ -127,9 +127,9 @@ local settings = {
         format = {
             enabled = false,
             settings = {
-                profile = 'DdbLogService',
-                url = '/home/ecobos/work-dotfiles/LogProducer/DdbLogService.xml'
-            }
+                profile = "DdbLogService",
+                url = "/home/ecobos/dotfiles/java/formatting/DdbLogService.xml",
+            },
         },
     },
     signatureHelp = {
@@ -196,5 +196,5 @@ return {
     on_init = on_init,
     settings = settings,
     flags = flags,
-    init_options = init_options
+    init_options = init_options,
 }

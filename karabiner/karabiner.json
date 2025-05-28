@@ -1,96 +1,147 @@
 {
-    "global": { "show_in_menu_bar": false },
-    "profiles": [
-        {
-            "complex_modifications": {
-                "rules": [
-                    {
-                        "manipulators": [
-                            {
-                                "description": "Change right_option to shift-super",
-                                "from": {
-                                    "key_code": "right_option",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_option",
-                                        "modifiers": ["left_command", "left_control", "left_shift"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "manipulators": [
-                            {
-                                "description": "Change right_command to super",
-                                "from": {
-                                    "key_code": "right_command",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_command",
-                                        "modifiers": ["left_control", "left_option"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "manipulators": [
-                            {
-                                "description": "Change caps_lock to escape if tapped, but to control when held",
-                                "from": {
-                                    "key_code": "caps_lock",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_control",
-                                        "lazy": true
-                                    }
-                                ],
-                                "to_if_alone": [{ "key_code": "escape" }],
-                                "type": "basic"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "devices": [
-                {
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "product_id": 50504,
-                        "vendor_id": 1133
-                    },
-                    "simple_modifications": [
-                        {
-                            "from": { "key_code": "left_command" },
-                            "to": [{ "key_code": "left_option" }]
-                        },
-                        {
-                            "from": { "key_code": "left_option" },
-                            "to": [{ "key_code": "left_command" }]
-                        },
-                        {
-                            "from": { "key_code": "right_control" },
-                            "to": [{ "key_code": "right_option" }]
-                        },
-                        {
-                            "from": { "key_code": "right_option" },
-                            "to": [{ "key_code": "right_command" }]
-                        }
+  "global": {
+    "show_in_menu_bar": false
+  },
+  "profiles": [
+    {
+      "complex_modifications": {
+        "rules": [
+          {
+            "manipulators": [
+              {
+                "description": "Change right_option to shift-super",
+                "from": {
+                  "key_code": "right_option",
+                  "modifiers": {
+                    "optional": [
+                      "any"
                     ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_option",
+                    "modifiers": [
+                      "left_command",
+                      "left_control",
+                      "left_shift"
+                    ]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "manipulators": [
+              {
+                "description": "Change right_command to super",
+                "from": {
+                  "key_code": "right_command",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_command",
+                    "modifiers": [
+                      "left_control",
+                      "left_option"
+                    ]
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          },
+          {
+            "manipulators": [
+              {
+                "description": "Change caps_lock to escape if tapped, but to control when held",
+                "from": {
+                  "key_code": "caps_lock",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_control",
+                    "lazy": true
+                  }
+                ],
+                "to_if_alone": [
+                  {
+                    "key_code": "escape"
+                  }
+                ],
+                "type": "basic"
+              }
+            ]
+          }
+        ]
+      },
+      "devices": [
+        {
+          "identifiers": {
+            "is_keyboard": true,
+            "product_id": 50504,
+            "vendor_id": 1133
+          },
+          "simple_modifications": [
+            {
+              "from": {
+                "key_code": "left_command"
+              },
+              "to": [
+                {
+                  "key_code": "left_option"
                 }
-            ],
-            "name": "Default profile",
-            "selected": true,
-            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+              ]
+            },
+            {
+              "from": {
+                "key_code": "left_option"
+              },
+              "to": [
+                {
+                  "key_code": "left_command"
+                }
+              ]
+            },
+            {
+              "from": {
+                "key_code": "right_control"
+              },
+              "to": [
+                {
+                  "key_code": "right_option"
+                }
+              ]
+            },
+            {
+              "from": {
+                "key_code": "right_option"
+              },
+              "to": [
+                {
+                  "key_code": "right_command"
+                }
+              ]
+            }
+          ]
         }
-    ]
+      ],
+      "name": "Default profile",
+      "selected": true,
+      "virtual_hid_keyboard": {
+        "keyboard_type_v2": "ansi"
+      }
+    }
+  ]
 }
