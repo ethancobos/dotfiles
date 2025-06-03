@@ -46,14 +46,7 @@ map("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." fo
 map("n", "<leader>sb", builtin.buffers, { desc = "[S]earch [B]uffers" })
 map("n", "<leader>sc", builtin.git_commits, { desc = "[S]earch [C]ommits" })
 map("n", "<leader>st", builtin.git_status, { desc = "[S]earch s[T]atus" })
-
-map("n", "<leader>/", function()
-    -- You can pass additional configuration to Telescope to change the theme, layout, etc.
-    builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-        winblend = 10,
-        previewer = false,
-    }))
-end, { desc = "[/] Fuzzily search in current buffer" })
+map("n", "<leader>/", builtin.current_buffer_fuzzy_find, { desc = "[/] Fuzzily search in current buffer" })
 
 -- It's also possible to pass additional configuration options.
 --  See `:help telescope.builtin.live_grep()` for information about particular keys
