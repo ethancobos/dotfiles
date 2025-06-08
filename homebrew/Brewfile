@@ -4,7 +4,6 @@
 
 tap "amazon/amazon", "ssh://git.amazon.com/pkg/HomebrewAmazon"
 tap "aws/tap"
-tap "jandedobbeleer/oh-my-posh"
 tap "nikitabobko/tap"
 
 ## ╭──────────────────────────────────────────────╮
@@ -44,6 +43,7 @@ brew "unison"
 brew "xsel"
 brew "yaml-language-server"
 brew "zlib"
+brew "oh-my-posh"
 
 ## ╭──────────────────────────────────────────────╮
 ## │                   Casks                      │
