@@ -1,0 +1,44 @@
+## ╭──────────────────────────────────────────────╮
+## │                    Taps                      │
+## ╰──────────────────────────────────────────────╯
+
+tap "amazon/amazon", "ssh://git.amazon.com/pkg/HomebrewAmazon"
+tap "jandedobbeleer/oh-my-posh"
+
+## ╭──────────────────────────────────────────────╮
+## │                  Formulae                    │
+## ╰──────────────────────────────────────────────╯
+
+brew "libuv"
+brew "readline"
+brew "bash-language-server"
+brew "fd"
+brew "fzf"
+brew "google-java-format"
+brew "jdtls"
+brew "jq"
+brew "libyaml"
+brew "lua-language-server"
+brew "luajit"
+brew "marksman"
+brew "mypy"
+brew "tree-sitter"
+brew "neovim"
+brew "oh-my-posh"
+brew "pyright"
+brew "ruff"
+brew "shfmt"
+brew "stylua"
+brew "tmux"
+brew "tree"
+brew "xsel"
+brew "yaml-language-server"
+
+## ╭──────────────────────────────────────────────╮
+## │                   Casks                      │
+## ╰──────────────────────────────────────────────╯
+
+cask "aerospace"
+cask "alacritty"
+cask "font-jetbrains-mono"
+cask "font-jetbrains-mono-nerd-font"

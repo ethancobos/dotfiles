@@ -1,3 +1,6 @@
+# Determine if we are on work computer using the presence of a `.work_mode` file
+[ -f "$HOME/dotfiles/zsh/.work_mode" ] && export ON_WORK_COMPUTER=true || export ON_WORK_COMPUTER=false
+
 ## ╭──────────────────────────────────────────────╮
 ## │              Amazon Q Pre-Block              │
 ## ╰──────────────────────────────────────────────╯
@@ -9,9 +12,6 @@ fi
 ## ╭──────────────────────────────────────────────╮
 ## │            Environment Variables             │
 ## ╰──────────────────────────────────────────────╯
-
-# Determine if we are on work computer using the presence of a `.work_mode` file
-[ -f "$HOME/dotfiles/zsh/.work_mode" ] && export ON_WORK_COMPUTER=true || export ON_WORK_COMPUTER=false
 
 if [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]] then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -65,10 +65,9 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 
 # for some reason this won't work on work box
-if ! $ON_WORK_COMPUTER; then   
-    zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -a --color $realpath'
-fi
-
+# if ! $ON_WORK_COMPUTER; then   
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -a --color $realpath'
+# fi
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -77,7 +76,6 @@ autoload -Uz compinit && compinit
 if $ON_WORK_COMPUTER; then   
     source ~/.local/share/mise/completions.zsh
     source /home/ecobos/.brazil_completion/zsh_completion
-
 
     [ -f "/apollo/env/MechanicBigBirdCli/bin/mechanic-autocomplete.sh" ] && source "/apollo/env/MechanicBigBirdCli/bin/mechanic-autocomplete.sh"
 fi
@@ -154,7 +152,6 @@ if $ON_WORK_COMPUTER; then
     alias bbra='bbr apollo-pkg'
 
     # Other
-    alias auth="mwinit -o && kinit -f"
     alias print-java-version='printf "\n☕️ Java\n\n" && which java && java -version'
     alias switch-java-version='sudo alternatives --config java && source ~/.zshrc'
     alias isengard="/apollo/env/AmazonAwsCli/bin/isengard"
@@ -196,6 +193,10 @@ alias tks="tmux kill-session"
 alias tkst="tmux kill-session -t"
 alias tls="tmux ls"
 
+# homebrew
+alias bbic="brew update &&\
+    brew bundle install --cleanup --file=~/dotfiles/homebrew/Brewfile &&\
+    brew upgrade"
 ## ╭──────────────────────────────────────────────╮
 ## │              Shell Integrations              │
 ## ╰──────────────────────────────────────────────╯
