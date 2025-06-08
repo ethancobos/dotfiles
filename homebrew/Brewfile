@@ -33,7 +33,6 @@ brew "mypy"
 brew "neovim"
 brew "oh-my-posh"
 brew "pyright"
-brew "rbenv"
 brew "ruby"
 brew "ruff"
 brew "shfmt"
@@ -45,7 +44,6 @@ brew "unison"
 brew "xsel"
 brew "yaml-language-server"
 brew "zlib"
-brew "amazon/amazon/ninja-dev-sync"
 
 ## ╭──────────────────────────────────────────────╮
 ## │                   Casks                      │
