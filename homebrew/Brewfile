@@ -3,36 +3,49 @@
 ## ╰──────────────────────────────────────────────╯
 
 tap "amazon/amazon", "ssh://git.amazon.com/pkg/HomebrewAmazon"
+tap "aws/tap"
 tap "jandedobbeleer/oh-my-posh"
+tap "nikitabobko/tap"
 
 ## ╭──────────────────────────────────────────────╮
 ## │                  Formulae                    │
 ## ╰──────────────────────────────────────────────╯
 
-brew "libuv"
-brew "readline"
+brew "xz"
+brew "openssl@3"
+brew "libyaml"
+brew "aws-sam-cli"
 brew "bash-language-server"
+brew "cairo"
 brew "fd"
 brew "fzf"
 brew "google-java-format"
+brew "python@3.12"
+brew "librsvg"
+brew "graphviz"
 brew "jdtls"
 brew "jq"
-brew "libyaml"
+brew "libffi"
 brew "lua-language-server"
-brew "luajit"
 brew "marksman"
+brew "mise"
 brew "mypy"
-brew "tree-sitter"
 brew "neovim"
 brew "oh-my-posh"
 brew "pyright"
+brew "rbenv"
+brew "ruby"
 brew "ruff"
 brew "shfmt"
 brew "stylua"
+brew "tcl-tk"
 brew "tmux"
 brew "tree"
+brew "unison"
 brew "xsel"
 brew "yaml-language-server"
+brew "zlib"
+brew "amazon/amazon/ninja-dev-sync"
 
 ## ╭──────────────────────────────────────────────╮
 ## │                   Casks                      │
