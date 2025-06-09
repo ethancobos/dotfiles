@@ -65,9 +65,9 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 
 # for some reason this won't work on work box
-# if ! $ON_WORK_COMPUTER; then   
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -a --color $realpath'
-# fi
+if ! $ON_WORK_COMPUTER; then   
+    zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -a --color $realpath'
+fi
 
 # Load completions
 autoload -Uz compinit && compinit
