@@ -15,6 +15,9 @@ title = "Alacritty"
 dynamic_title = true
 decorations_theme_variant = "None"
 
+[scrolling]
+multiplier = 1
+
 [font]
 size = 14
 normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }

@@ -6,7 +6,7 @@ local g = vim.g
 -- │                  General                     │
 -- ╰──────────────────────────────────────────────╯
 
-o.winborder = 'rounded'
+o.winborder = "rounded"
 o.laststatus = 3
 o.showmode = false
 o.swapfile = false
@@ -43,7 +43,13 @@ o.softtabstop = 4
 opt.fillchars = { eob = " " }
 o.ignorecase = true
 o.smartcase = true
+
+-- ╭──────────────────────────────────────────────╮
+-- │                    Mouse                     │
+-- ╰──────────────────────────────────────────────╯
+
 o.mouse = "a"
+o.mousescroll = "ver:1,hor:6"
 
 -- ╭──────────────────────────────────────────────╮
 -- │                   Numbers                    │
