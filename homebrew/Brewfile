@@ -1,4 +1,10 @@
 ## ╭──────────────────────────────────────────────╮
+## │                    Taps                      │
+## ╰──────────────────────────────────────────────╯
+
+tap "nikitabobko/tap"
+
+## ╭──────────────────────────────────────────────╮
 ## │                  Formulae                    │
 ## ╰──────────────────────────────────────────────╯
 
@@ -42,7 +48,7 @@ brew "oh-my-posh"
 ## │                   Casks                      │
 ## ╰──────────────────────────────────────────────╯
 
-cask "nikitabobko/tap/aerospace"
+cask "aerospace"
 cask "alacritty"
 cask "karabiner-elements"
 cask "font-jetbrains-mono-nerd-font"
