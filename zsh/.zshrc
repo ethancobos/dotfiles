@@ -104,7 +104,6 @@ zinit light zsh-users/zsh-autosuggestions
 
 # Add in snippets
 zinit snippet OMZP::git
-zinit snippet OMZP::aws
 zinit snippet OMZP::command-not-found
 
 ## ╭──────────────────────────────────────────────╮
