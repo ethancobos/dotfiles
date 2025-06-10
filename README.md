@@ -1,9 +1,8 @@
-# My Dotfile Repo 
+# My Dotfiles
 
-**TL;DR** Almost all configuration is inspired/stolen from [Dreams of Code](https://github.com/dreamsofcode-io) and [
-Dreams of Autonomy](https://github.com/dreamsofautonomy). I would highly recommend browsing through his Github and YouTube accounts.
+This repo contains all of the configuration for all of the tools that I use everyday as a software developer. It is a combination of my personal configuration and work configuration. See [General Setup](#general-setup) for the details on how I ensure that my work-specific and home-specific configuration doesn't mix.
 
-This repo contains a combination of my personal configuration and work configuration. See [General Setup](#general-setup) for the details on how I ensure that my work-specific and home-specific configuration doesn't mix.
+Each folder in this repo cooresponds (ussually) to a tool that I use. In the following sections I'll go over each of these tools in the order that I would install/set then up if I were starting from a fresh machine
 
 ## General Setup
 
@@ -19,21 +18,31 @@ In order to include special work specific configuration, my `.zshrc` has some lo
 
     touch ~/dotfiles/zsh/.work_mode
 
-## Fine Grained Setup
- 
-Below are all of the sub-directories of this repo and the commands to soft link all necessary configuration files
+## [Homebrew](https://brew.sh)
 
-## AeroSpace
+**Follow the guidence on the official homebrew website for detail of how to install on your machine**
 
-I use AeroSpace as my choice of tiling window manager.
+The first tool that I would install on a new machine is Homebrew which is my package manager of choice. Instead of installing packages ad hoc with `brew install <package>`, I use a special set of commands along with a Brewfile to keep it declarative. This ensures that the contents of `dotfiles/homebrew/Brewfile` represent the exact state of my packages. each time I want to install or uninstall a package, I simply add it or remove it from the Brewfile, then I run the following command:
 
-    ln -s ~/dotfiles/aerospace/.aerospace.toml ~/
+```
+brew update && brew bundle install --cleanup --file=~/dotfiles/homebrew/Brewfile && brew upgrade
+```
 
-### Links
+The `--cleanup` argument is key in making sure whatever is not present in my Brewfile is not on my machine. In my `.zshrc` file I alias this command to `bbic`
 
-https://github.com/nikitabobko/AeroSpace
+## [Karabiner-elements](https://karabiner-elements.pqrs.org/)
 
-* Also check out (yabai)[https://github.com/koekeishiya/yabai] which is the more popular window manager
+**Installed along with other packages in Brewfile**
+
+Karabiner-elements allows you to rebind keys on 3rd-party keyboads as well as the Macbook built in keyboard.
+
+## [AeroSpace](https://github.com/nikitabobko/AeroSpace)
+
+**Installed along with other packages in Brewfile**
+
+I use AeroSpace as my choice of tiling window manager. It is much less popular the yabai, but its simple and does more than what I use it for.
+
+    ln -s ~/dotfiles/aerospace/.aerospace.toml ~/.aerospace.toml
 
 ## bin
 
@@ -121,23 +130,3 @@ Don't even bother, just use Neovim
 ### Links
 https://github.com/junegunn/fzf
 https://github.com/zdharma-continuum/zinit
-
-## Other Important Tools and Configurations
-
-### iTerm2 
-
-https://iterm2.com
-
-* My terminal emulator of choice
-
-### Catppuccin
-
-https://catppuccin.com
-
-* I try to keep my theme consistent throughout every tool I use. I've found that cattpuccin is supported in almost everything I use
-
-### JetBrainsMono Nerd Font
-
-https://formulae.brew.sh/cask/font-jetbrains-mono-nerd-font
-
-* My font of choice that I also try to keep consistent everywhere, but really any nerd font should do.
