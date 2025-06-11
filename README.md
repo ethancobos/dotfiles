@@ -134,48 +134,127 @@ A general-purpose command-line fuzzy finder.
 `fzf` is a really great terminal fuzzy finder. I don't really use it in isolation as much as I probably should, but integrating it with your shell history is one of the best decisions I've ever made. 
 
 ## [Zsh](https://www.zsh.org/)
+
+An interactive login shell and a command interpreter.
+
 ### Installation and Configuration
+
+1. Can be installed with Homebrew, but it should come pre-installed on most machines. 
+2. Soft-link `.zshrc` file to home directory:
+
+        ln -s ~/dotfiles/zsh/.zshrc ~/.zshrc
+
+Once this is done, reloading your shell should enable all of the `oh-my-posh`, `zinit`, and `fzf` configuration.
+
 ### Usage
+
+Zshell is probably the most popular shell among software developers. I just throw everything into my `.zshrc` file usually.
 
 ## [Neovim](https://neovim.io/doc/)
+
+Vim-fork focused on extensibility and usability.
+
 ### Installation and Configuration
+
+1. Installed along with other packages in Brewfile via `brew "neovim"`
+2. Soft-link `nvim` directory to the `.config` directory:
+
+        ln -s ~/dotfiles/nvim ~/.config/nvim
+
 ### Usage
 
+TODO
 
 ## [Tmux](https://github.com/tmux/tmux/wiki)
+
+A terminal multiplexer.
+
 ### Installation and Configuration
+
+TODO
+
 ### Usage
 
+TODO
 
 ## bin
+
+A place to store custom bash scripts
+
 ### Installation and Configuration
+
+1. Create a `bin` directory on your machine via:
+
+        mkdir -p ~/.local/bin
+
+2. Soft-link any relevant directories under `dotfiles/bin`. For my general purpose scripts I do: 
+
+        ln -s ~/dotfiles/bin/general ~/.local/bin
+
+3. Add the relevant directory to your `PATH` variable:
+
+        export PATH=$HOME/.local/bin/general:$PATH 
+
 ### Usage
 
-
+TODO
 
 ## [Git](https://git-scm.com/)
+
+A fast, scalable, and distributed revision control system
+
 ### Installation and Configuration
-### Configuration
+
+TODO
+
+### Usage
+
+TODO
+
 ## [Java](https://www.java.com/en/)
+
+TODO
+
 ### Installation and Configuration
-### Configuration
+
+TODO
+
+### Usage
+
+TODO
+
 ## [Python](https://www.python.org/)
+
+TODO
+
 ### Installation and Configuration
-### Configuration
+
+TODO
+
+### Usage
+
+TODO
+
 ## [Ruby](https://www.ruby-lang.org/en/)
+
+TODO
+
 ### Installation and Configuration
-### Configuration
+
+TODO
+
+### Usage
+
+TODO
+
 ## [Vim](https://github.com/vim/vim)
+
+TODO
+
 ### Installation and Configuration
-### Configuration
 
-## bin
+TODO
 
-This is where I keep any scripts that I write, both work related ones and general purpose ones. I soft link them using the following:
+### Usage
 
-    mkdir -p ~/.local/bin
-    ln -s ~/dotfiles/bin/general/ ~/.local/bin/
-
-For amazon specific scripts:
-
-    ln -s ~/dotfiles/bin/amazon/ ~/.local/bin/
+TODO
