@@ -75,19 +75,62 @@ An i3-like tiling window manager for macOS.
 
 ### Usage
 
-I use AeroSpace as my choice of tiling window manager. It is much less popular the [Yabai](https://github.com/koekeishiya/yabai), but its simple and does more than what I use it for.
-
-
-## [Oh My Posh](https://ohmyposh.dev/)
+I use AeroSpace as my choice of tiling window manager. It is much less popular the [Yabai](https://github.com/koekeishiya/yabai), but its simple and does more than what I use it for. Apples virtual desktops suck, and instead of having to swip left right and up to find application windows, aerospace allows me to jump to and rearrange windows with at most two keys. As previously mentioned I use `ctrl-alt-cmd` as one of my Aerospace leader keys and I bind it to the key directly to the right of my space bar. I then bind every letter key on the left side of my keyboard to an aerospace window. This means to jump around i just grab the leader key with my thumb and the window key with my left hand. It is so natural and so fast, it is probably my favorite configuration in this repo.
 
 ## [Alacritty](https://alacritty.org/)
 
+A fast, cross-platform, OpenGL terminal emulator.
+
+### Installation and Configuration
+
+1. Installed along with other packages in Brewfile via `cask "alacritty"`
+2. Soft-link `alacritty` directory to `.config` directory:
+
+        ln -s ~/dotfiles/alacritty ~/.config/alacritty
+
+### Usage
+
+I used to use [iTerm2](https://iterm2.com/) as my terminal emulator of choice, but I soon realized that there was no way to declaratively store my configuration in a text-based format. This prompted me to look for an alternative which is when I found alacritty. The configuration is super simple and though it lacks certain features that iTerm may have (like native tabs), it's nothing that I wouldn't already be using tmux for.
+
+## [Oh My Posh](https://ohmyposh.dev/)
+
+A prompt theme engine for any shell.
+
+### Installation and Configuration
+
+1. Installed along with other packages in Brewfile via `brew "oh-my-posh"`
+2. Add `eval "$(oh-my-posh init zsh --config $HOME/dotfiles/oh-my-posh/main.yaml)"` to `.zshrc` (already in this repo's `.zshrc`, see [zinit](#zinit))
+
+### Usage
+
+oh-my-posh is responsible for giving my terminal a super clean and minimalist look, I especially love the transient prompt feature.
+
+Full disclosure, my configuration was almost entirely stolen/copied from [this video](https://www.youtube.com/watch?v=9U8LCjuQzdc&t=84s) by Dreams of Code on YouTube. His channel is super underrated overall and I highly recommend you check him out. 
+
+## [Zinit](https://github.com/zdharma-continuum/zinit)
+
+A flexible and fast Zshell plugin manager.
+
+### Installation and Configuration
+### Usage
+
+
+## [Neovim](https://neovim.io/doc/)
+### Installation and Configuration
+### Usage
+
+## [Tmux](https://github.com/tmux/tmux/wiki)
+### Installation and Configuration
+### Usage
+
+## [fzf](https://github.com/junegunn/fzf)
+### Installation and Configuration
+### Usage
+
 ## bin
-### Installation
+### Installation and Configuration
+### Usage
 
-**N/A**
-
-### Configuration
 
 
 ## [Git](https://git-scm.com/)
@@ -96,22 +139,13 @@ I use AeroSpace as my choice of tiling window manager. It is much less popular t
 ## [Java](https://www.java.com/en/)
 ### Installation and Configuration
 ### Configuration
-## [Neovim](https://neovim.io/doc/)
-### Installation and Configuration
-### Configuration
 ## [Python](https://www.python.org/)
 ### Installation and Configuration
 ### Configuration
 ## [Ruby](https://www.ruby-lang.org/en/)
 ### Installation and Configuration
 ### Configuration
-## [Tmux](https://github.com/tmux/tmux/wiki)
-### Installation and Configuration
-### Configuration
 ## [Vim](https://github.com/vim/vim)
-### Installation and Configuration
-### Configuration
-## [Zsh](https://www.zsh.org/)
 ### Installation and Configuration
 ### Configuration
 
