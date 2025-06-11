@@ -99,7 +99,7 @@ A prompt theme engine for any shell.
 ### Installation and Configuration
 
 1. Installed along with other packages in Brewfile via `brew "oh-my-posh"`
-2. Add `eval "$(oh-my-posh init zsh --config $HOME/dotfiles/oh-my-posh/main.yaml)"` to `.zshrc` (already in this repo's `.zshrc`, see [zinit](#zinit))
+2. Add `eval "$(oh-my-posh init zsh --config $HOME/dotfiles/oh-my-posh/main.yaml)"` to `.zshrc` (already in this repo's `.zshrc`, see [Zsh](#zsh))
 
 ### Usage
 
@@ -112,20 +112,40 @@ Full disclosure, my configuration was almost entirely stolen/copied from [this v
 A flexible and fast Zshell plugin manager.
 
 ### Installation and Configuration
+
+1. Installed along with other packages in Brewfile via `brew "zinit"`
+2. Add `source "${HOMEBREW_PREFIX}/opt/zinit/zinit.zsh"` to `.zshrc` (already in this repo's `.zshrc`, see [Zsh](#zsh))
+
 ### Usage
 
+Zinit is my choice of terminal plugin manager. It is faster and less bloated than the more popular [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh). Again, this is mostly copied from [another video](https://www.youtube.com/watch?v=ud7YxC33Z3w&t=900s) by Dreams of Code. I would recommend you watch that for the details of what each plugin does and how configuration works.
+
+## [fzf](https://github.com/junegunn/fzf)
+
+A general-purpose command-line fuzzy finder.
+
+### Installation and Configuration
+
+1. Installed along with other packages in Brewfile via `brew "fzf"`
+2. Add `eval "$(fzf --zsh)"` to the `.zshrc` file. There are also some fancy plugins in zinit that integrate which `fzf`
+ 
+### Usage
+
+`fzf` is a really great terminal fuzzy finder. I don't really use it in isolation as much as I probably should, but integrating it with your shell history is one of the best decisions I've ever made. 
+
+## [Zsh](https://www.zsh.org/)
+### Installation and Configuration
+### Usage
 
 ## [Neovim](https://neovim.io/doc/)
 ### Installation and Configuration
 ### Usage
 
+
 ## [Tmux](https://github.com/tmux/tmux/wiki)
 ### Installation and Configuration
 ### Usage
 
-## [fzf](https://github.com/junegunn/fzf)
-### Installation and Configuration
-### Usage
 
 ## bin
 ### Installation and Configuration
@@ -159,79 +179,3 @@ This is where I keep any scripts that I write, both work related ones and genera
 For amazon specific scripts:
 
     ln -s ~/dotfiles/bin/amazon/ ~/.local/bin/
-
-## git
-
-I put all my git configuration in a non-tracked file since it is confidential. I load this data into my `.gitconfig` file.
-
-    ln -s ~/dotfiles/git/.gitconfig ~/
-   
-## java
-
-This is where I keep any custom java LSP related things
-
-## Karabiner
-
-I use karabiner elements to rebind a ton of macbook keys.
-
-    ln -s ~/dotfiles/karabiner/ ~/.config/  
-
-### Links
-https://karabiner-elements.pqrs.org
-
-## Neovim/NvChad
-
-The best code editor out there
-
-    ln -s ~/dotfiles/nvim/ ~/.config/ 
-
-### Links
-https://nvchad.com
-
-## powerlevel10k
-
-For making my Zshell elite
-
-    ln -s ~/dotfiles/p10k/.p10k.zsh ~/
-
-### Links
-https://github.com/romkatv/powerlevel10k
-
-## python
-
-Where I keep my LSP configuration files
-
-### Links
-https://github.com/microsoft/pyright
-https://github.com/astral-sh/ruff-lsp
-
-## ruby
-
-Where I keep my LSP configuration files
-
-    ln -s ~/dotfiles/ruby/.rubocop.yml ~/
-
-### Links
-https://github.com/Shopify/ruby-lsp
-
-## tmux
-
-    ln -s ~/dotfiles/tmux/.tmux.conf ~/
-
-### Links
-https://github.com/tmux/tmux/wiki
-
-## vim
-
-Don't even bother, just use Neovim
-
-    ln -s ~/dotfiles/vim/.vimrc ~/
-    
-
-## zsh/zinit
-
-    ln -s ~/dotfiles/zsh/.zshrc ~/
-
-### Links
-https://github.com/junegunn/fzf
-https://github.com/zdharma-continuum/zinit

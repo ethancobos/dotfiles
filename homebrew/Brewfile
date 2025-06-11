@@ -30,6 +30,7 @@ brew "oh-my-posh"
 brew "fzf"
 brew "tree"
 brew "aws-sam-cli"
+brew "zinit"
 
 # Others
 brew "xz"
