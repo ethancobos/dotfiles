@@ -2,7 +2,7 @@
 
 This repo contains all of the configuration for all of the tools that I use everyday as a software developer. It is a combination of my personal configuration and work configuration. See [General Setup](#general-setup) for the details on how I ensure that my work-specific and home-specific configuration doesn't mix.
 
-Each folder in this repo cooresponds (ussually) to a tool that I use. In the following sections I'll go over each of these tools in the order that I would install/set then up if I were starting from a fresh machine
+Each folder in this repo corresponds (usually) to a tool that I use. In the following sections I'll go over each of these tools in the order that I would install/set then up if I were starting from a fresh machine
 
 ## General Setup
 
@@ -20,29 +20,84 @@ In order to include special work specific configuration, my `.zshrc` has some lo
 
 ## [Homebrew](https://brew.sh)
 
-**Follow the guidence on the official homebrew website for detail of how to install on your machine**
+### Installation and Configuration
 
-The first tool that I would install on a new machine is Homebrew which is my package manager of choice. Instead of installing packages ad hoc with `brew install <package>`, I use a special set of commands along with a Brewfile to keep it declarative. This ensures that the contents of `dotfiles/homebrew/Brewfile` represent the exact state of my packages. each time I want to install or uninstall a package, I simply add it or remove it from the Brewfile, then I run the following command:
+**Follow the guidance on the official Homebrew website for detail of how to install on your machine**
 
-```
-brew update && brew bundle install --cleanup --file=~/dotfiles/homebrew/Brewfile && brew upgrade
-```
+### Usage
+
+The first tool that I install on a new machine is Homebrew which is my package manager of choice. Instead of installing packages ad hoc with `brew install <package>`, I use a special set of commands along with a Brewfile to keep it declarative. This ensures that the contents of `dotfiles/homebrew/Brewfile` represent the exact state of my packages. Each time I want to install or uninstall a package, I simply add it or remove it from the Brewfile, then I run the following command:
+
+    brew update && brew bundle install --cleanup --file=~/dotfiles/homebrew/Brewfile && brew upgrade
 
 The `--cleanup` argument is key in making sure whatever is not present in my Brewfile is not on my machine. In my `.zshrc` file I alias this command to `bbic`
 
 ## [Karabiner-elements](https://karabiner-elements.pqrs.org/)
 
-**Installed along with other packages in Brewfile**
+### Installation and Configuration
 
-Karabiner-elements allows you to rebind keys on 3rd-party keyboads as well as the Macbook built in keyboard.
+1. Installed along with other packages in Brewfile via `cask "karabiner-elements"`
+2. Soft-link configuration directory:
+
+    ln -s ~/dotfiles/karabiner ~/.config/karabiner 
+
+### Usage
+
+Karabiner-elements allows you to rebind keys on 3rd-party keyboards as well as the MacBook built in keyboard. There are a few modifications that I use which I think everyone should consider trying out, especially if you are considering using this repository as a guide for you own configuration. I'll go into detail about each below.
+
+#### The Caps Lock Key
+
+The caps lock key is the biggest waste of space on the keyboard, especially considering that it occupies a prime location right next to the left pinky. I use karabiner elements to instead give this key the following behavior:
+
+- When held
 
 ## [AeroSpace](https://github.com/nikitabobko/AeroSpace)
 
+### Installation
+### Configuration
+
 **Installed along with other packages in Brewfile**
 
-I use AeroSpace as my choice of tiling window manager. It is much less popular the yabai, but its simple and does more than what I use it for.
+I use AeroSpace as my choice of tiling window manager. It is much less popular the [Yabai](https://github.com/koekeishiya/yabai), but its simple and does more than what I use it for.
 
     ln -s ~/dotfiles/aerospace/.aerospace.toml ~/.aerospace.toml
+
+## [Oh My Posh](https://ohmyposh.dev/)
+
+## [Alacritty](https://alacritty.org/)
+
+## bin
+### Installation
+
+**N/A**
+
+### Configuration
+
+
+## [Git](https://git-scm.com/)
+### Installation and Configuration
+### Configuration
+## [Java](https://www.java.com/en/)
+### Installation and Configuration
+### Configuration
+## [Neovim](https://neovim.io/doc/)
+### Installation and Configuration
+### Configuration
+## [Python](https://www.python.org/)
+### Installation and Configuration
+### Configuration
+## [Ruby](https://www.ruby-lang.org/en/)
+### Installation and Configuration
+### Configuration
+## [Tmux](https://github.com/tmux/tmux/wiki)
+### Installation and Configuration
+### Configuration
+## [Vim](https://github.com/vim/vim)
+### Installation and Configuration
+### Configuration
+## [Zsh](https://www.zsh.org/)
+### Installation and Configuration
+### Configuration
 
 ## bin
 
