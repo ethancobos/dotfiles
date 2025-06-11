@@ -20,6 +20,8 @@ In order to include special work specific configuration, my `.zshrc` has some lo
 
 ## [Homebrew](https://brew.sh)
 
+The Missing Package Manager for macOS (or Linux).
+
 ### Installation and Configuration
 
 **Follow the guidance on the official Homebrew website for detail of how to install on your machine**
@@ -34,12 +36,14 @@ The `--cleanup` argument is key in making sure whatever is not present in my Bre
 
 ## [Karabiner-elements](https://karabiner-elements.pqrs.org/)
 
+A powerful and stable keyboard customizer for macOS.
+
 ### Installation and Configuration
 
 1. Installed along with other packages in Brewfile via `cask "karabiner-elements"`
-2. Soft-link configuration directory:
+2. Soft-link karabiner directory to `.config` directory:
 
-    ln -s ~/dotfiles/karabiner ~/.config/karabiner 
+        ln -s ~/dotfiles/karabiner ~/.config/karabiner 
 
 ### Usage
 
@@ -49,18 +53,30 @@ Karabiner-elements allows you to rebind keys on 3rd-party keyboards as well as t
 
 The caps lock key is the biggest waste of space on the keyboard, especially considering that it occupies a prime location right next to the left pinky. I use karabiner elements to instead give this key the following behavior:
 
-- When held
+- When held or pressed along side other keys it registers as a `control` modifier
+- When tapped in isolation it registers an `escape`
+
+This behavior is optimized for my setup in a number of ways. Firstly I'm a die hard Neovim user, so having the escape key in a prime location right next to my pinky is super useful. Secondly, I am also a die hard tmux user with my leader sequence bound to `C-Space`, so again its so natural to just move my pinky over one key instead of needing to reach way over for the dedicated control key.
+
+#### ctrl-alt-cmd and ctrl-alt-cmd-shift
+
+The other rebinding that I do on every keyboard I have is to have a dedicated key to hit `ctrl-alt-cmd` and `ctrl-alt-cmd-shift` all in one stroke. On a Macbook I bind `ctrl-alt-cmd` to right command and `ctrl-alt-cmd-shift` to right option, but for other keyboards the rule of thumb is to just bind `ctrl-alt-cmd` to whatever key is directly to the right of the space bar and then `ctrl-alt-cmd-shift` to whatever is directly to the right of that. The reasoning behind this is that each of these keys serve as leader keys for my [Aerospace](#aerospace) bindings which is one of the most important tools in my workflow.
 
 ## [AeroSpace](https://github.com/nikitabobko/AeroSpace)
 
-### Installation
-### Configuration
+An i3-like tiling window manager for macOS.
 
-**Installed along with other packages in Brewfile**
+### Installation and Configuration
+
+1. Installed along with other packages in Brewfile via `cask "karabiner-elements"`
+2. Soft-link `.aerospace.toml` file to home directory:
+
+        ln -s ~/dotfiles/aerospace/.aerospace.toml ~/.aerospace.toml
+
+### Usage
 
 I use AeroSpace as my choice of tiling window manager. It is much less popular the [Yabai](https://github.com/koekeishiya/yabai), but its simple and does more than what I use it for.
 
-    ln -s ~/dotfiles/aerospace/.aerospace.toml ~/.aerospace.toml
 
 ## [Oh My Posh](https://ohmyposh.dev/)
 
