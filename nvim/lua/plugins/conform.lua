@@ -12,8 +12,11 @@ return {
             lua = { "stylua" },
             bash = { "shfmt" },
             json = { "jq" },
+            python = {
+                -- "ruff_format",
+                "ruff_organize_imports",
+            },
             -- java = { "google-java-format" },
-            -- python = { "ruff_format", "ruff_organize_imports" },
             -- ruby = { "rubocop" },
         },
     },

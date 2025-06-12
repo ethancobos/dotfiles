@@ -3,8 +3,8 @@
 -- ╰──────────────────────────────────────────────╯
 
 -- path/to/file:line:col: severity: message
-local pattern = '([^:]+):(%d+):(%d+):(%d+):(%d+): (%a+): (.*) %[(%a[%a-]+)%]'
-local groups = { 'file', 'lnum', 'col', 'end_lnum', 'end_col', 'severity', 'message', 'code' }
+local pattern = "([^:]+):(%d+):(%d+):(%d+):(%d+): (%a+): (.*) %[(%a[%a-]+)%]"
+local groups = { "file", "lnum", "col", "end_lnum", "end_col", "severity", "message", "code" }
 local severities = {
     error = vim.diagnostic.severity.ERROR,
     warning = vim.diagnostic.severity.WARN,
@@ -16,10 +16,6 @@ local severities = {
 -- ╰──────────────────────────────────────────────╯
 
 local args = {
-    -- "--python-executable",
-    -- "put path to excecutable here"
-    "--config-file",
-    "/home/ecobos/dotfiles/python/.mypy.ini",
     "--show-column-numbers",
     "--show-error-end",
     "--hide-error-context",
@@ -32,11 +28,11 @@ local args = {
 -- │                   Parser                     │
 -- ╰──────────────────────────────────────────────╯
 
-local parser = require('lint.parser').from_pattern(
+local parser = require("lint.parser").from_pattern(
     pattern,
     groups,
     severities,
-    { ['source'] = 'mypy' },
+    { ["source"] = "mypy" },
     { end_col_offset = 0 }
 )
 
@@ -45,7 +41,7 @@ local parser = require('lint.parser').from_pattern(
 -- ╰──────────────────────────────────────────────╯
 
 return {
-    cmd = 'mypy',
+    cmd = "mypy",
     stdin = false,
     stream = "both",
     ignore_exitcode = true,

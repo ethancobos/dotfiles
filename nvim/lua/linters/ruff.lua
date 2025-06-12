@@ -1,4 +1,4 @@
-local helpers = require('utils.helpers')
+local helpers = require("utils.helpers")
 
 -- ╭──────────────────────────────────────────────╮
 -- │                     Args                     │
@@ -8,10 +8,11 @@ local args = {
     "check",
     "--force-exclude",
     "--quiet",
-    "--stdin-filename", helpers.get_file_name,
-    "--config", "/home/ecobos/dotfiles/python/.ruff.toml",
+    "--stdin-filename",
+    helpers.get_file_name,
     "--no-fix",
-    "--output-format", "json",
+    "--output-format",
+    "json",
     "-",
 }
 
