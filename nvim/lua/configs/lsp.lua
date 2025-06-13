@@ -67,11 +67,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("gW", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Open Workspace Symbols")
         map("grt", require("telescope.builtin").lsp_type_definitions, "[G]oto [T]ype Definition")
 
-        -- Toggle ddagnostics
-        map("<leader>dt", function()
-            vim.diagnostic.enable(not vim.diagnostic.is_enabled())
-        end, "[D]iagnostic [T]oggle")
-
         -- client config
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_codeLens, event.buf) then

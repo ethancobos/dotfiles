@@ -16,7 +16,6 @@ require("lazy").setup({
     require("plugins.treesitter"),
     require("plugins.nvim-lint"),
     require("plugins.vim-tmux-navigator"),
-    require("plugins.trouble"),
     require("plugins.oil"),
 }, {
     defaults = { lazy = true },
