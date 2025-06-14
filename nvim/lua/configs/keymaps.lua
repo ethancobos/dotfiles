@@ -9,8 +9,6 @@ local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
-map("n", "<C-s>", "<cmd>w<CR>", { desc = "general save file" })
-map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "general copy whole file" })
 
 -- ╭──────────────────────────────────────────────╮
 -- │                  Navigation                  │
@@ -85,6 +83,22 @@ map("n", "<leader>td", function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = "[T]oggle [D]iagnostics" })
 
-map("n", "<leader>tn", "<cmd>set nu!<CR>", { desc = "toggle line number" })
-map("n", "<leader>trn", "<cmd>set rnu!<CR>", { desc = "toggle relative number" })
+-- Toggling on always turns relativenumber on
+map("n", "<leader>tn", function()
+    if vim.wo.number or vim.wo.relativenumber then
+        vim.wo.number = false
+        vim.wo.relativenumber = false
+    else
+        vim.wo.number = true
+        vim.wo.relativenumber = true
+    end
+end, { desc = "[T]oggle Line [N]umber" })
+
+-- Only toggle relativenumber if number is on
+map("n", "<leader>tr", function()
+    if vim.wo.number then
+        vim.wo.relativenumber = not vim.wo.relativenumber
+    end
+end, { desc = "[T]oggle [R]elative number" })
+
 map("n", "<leader>tch", "<cmd>NvCheatsheet<CR>", { desc = "toggle nvcheatsheet" })
