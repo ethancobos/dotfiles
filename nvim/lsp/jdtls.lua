@@ -6,7 +6,6 @@ local amazon = require("utils.amazon")
 
 -- to cache some of the data calculated below
 local cache_vars = {}
-local jdtls_version = "1.47.0"
 
 -- Get all of the paths of various things needed for jdtls
 local get_jdtls_paths = function()
@@ -15,13 +14,14 @@ local get_jdtls_paths = function()
     end
 
     local path = {}
-    local jdtls_install = "/home/linuxbrew/.linuxbrew/Cellar/jdtls/" .. jdtls_version
+    local jdtls_install = vim.fn.glob(vim.env.HOMEBREW_CELLAR .. "/jdtls/*", true, true)[1]
+    local platform_config = vim.loop.os_uname().sysname == "Darwin" and "config_mac" or "config_linux"
 
     path.data_dir = vim.fn.stdpath("cache") .. "/nvim-jdtls"
     path.jdtls_bin = jdtls_install .. "/bin/jdtls"
-    path.java_agent = "/home/ecobos/.local/state/lombok/lombok.jar"
+    path.java_agent = vim.env.HOME .. "/dotfiles/java/lombok/lombok.jar"
     path.launcher_jar = vim.fn.glob(jdtls_install .. "/libexec/plugins/org.eclipse.equinox.launcher_*.jar")
-    path.platform_config = jdtls_install .. "/libexec/config_linux"
+    path.platform_config = jdtls_install .. "/libexec/" .. platform_config
     path.runtimes = {}
     path.bundles = {}
 
@@ -126,10 +126,6 @@ local settings = {
         },
         format = {
             enabled = false,
-            settings = {
-                profile = "DdbLogService",
-                url = "/home/ecobos/dotfiles/java/formatting/DdbLogService.xml",
-            },
         },
     },
     signatureHelp = {

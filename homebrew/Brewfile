@@ -55,3 +55,4 @@ cask "aerospace"
 cask "alacritty"
 cask "karabiner-elements"
 cask "font-jetbrains-mono-nerd-font"
+cask "temurin" # java

@@ -45,21 +45,6 @@ map("n", "<leader>x", function()
 end, { desc = "buffer close" })
 
 -- ╭──────────────────────────────────────────────╮
--- │                  NvimTree                    │
--- ╰──────────────────────────────────────────────╯
-
-map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
-map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "nvimtree focus window" })
-
--- ╭──────────────────────────────────────────────╮
--- │                  Themeing                    │
--- ╰──────────────────────────────────────────────╯
-
-map("n", "<leader>th", function()
-    require("nvchad.themes").open()
-end, { desc = "telescope nvchad themes" })
-
--- ╭──────────────────────────────────────────────╮
 -- │                  WhichKey                    │
 -- ╰──────────────────────────────────────────────╯
 
@@ -79,12 +64,14 @@ map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 -- │               Global Toggles                 │
 -- ╰──────────────────────────────────────────────╯
 
+map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "nvimtree toggle window" })
+
 map("n", "<leader>td", function()
     vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = "[T]oggle [D]iagnostics" })
 
--- Toggling on always turns relativenumber on
 map("n", "<leader>tn", function()
+    -- Toggling on always turns relativenumber on
     if vim.wo.number or vim.wo.relativenumber then
         vim.wo.number = false
         vim.wo.relativenumber = false
@@ -94,11 +81,15 @@ map("n", "<leader>tn", function()
     end
 end, { desc = "[T]oggle Line [N]umber" })
 
--- Only toggle relativenumber if number is on
 map("n", "<leader>tr", function()
+    -- Only toggle relativenumber if number is on
     if vim.wo.number then
         vim.wo.relativenumber = not vim.wo.relativenumber
     end
 end, { desc = "[T]oggle [R]elative number" })
 
-map("n", "<leader>tch", "<cmd>NvCheatsheet<CR>", { desc = "toggle nvcheatsheet" })
+map("n", "<leader>tc", "<cmd>NvCheatsheet<CR>", { desc = "[T]oggle [C]heatsheet" })
+
+map("n", "<leader>th", function()
+    require("nvchad.themes").open()
+end, { desc = "[T]elescope nvchad t[H]emes" })

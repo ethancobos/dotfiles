@@ -17,7 +17,6 @@ if [[ -f /home/linuxbrew/.linuxbrew/bin/brew ]] then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 elif [[ -f /opt/homebrew/bin/brew ]] then
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    export PATH=$HOME/opt/homebrew/opt/python@3.13/libexec/bin:$PATH
 fi
 
 # consistent colors when this config is on a remote host
@@ -45,9 +44,6 @@ if $ON_WORK_COMPUTER; then
     export PATH=/apollo/env/envImprovement/bin:$PATH
     export PATH=$HOME/.local/share/mise/shims:$PATH
     export PATH=$HOME/.local/bin/amazon:$PATH
-# Home only PATHs
-else
-    export PATH=$HOME/opt/homebrew/opt/python@3.13/libexec/bin:$PATH
 fi
 
 # Common Paths

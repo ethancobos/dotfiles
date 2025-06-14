@@ -266,7 +266,7 @@ Gonna depend on your machine.
 
 ### Usage
 
-I don't really have anything important in this folder, just a file containing formatting rules.
+I just put the lombok jar in here, probably not a good practice, but oh well it keeps its location consistent. 
 
 ## [Python](https://www.python.org/)
 
