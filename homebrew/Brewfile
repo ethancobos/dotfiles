@@ -46,6 +46,7 @@ brew "tcl-tk"
 brew "unison"
 brew "xsel"
 brew "zlib"
+brew "gradle"
 
 ## ╭──────────────────────────────────────────────╮
 ## │                   Casks                      │
