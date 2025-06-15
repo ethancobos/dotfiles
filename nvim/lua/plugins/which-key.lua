@@ -16,6 +16,7 @@ return {
                 { "gr", group = "[Goto] LSP" },
                 { "<leader>s", group = "[S]earch" },
                 { "<leader>t", group = "[T]oggle" },
+                { "<leader>w", group = "[W]hich Key" },
                 { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
             },
         }
