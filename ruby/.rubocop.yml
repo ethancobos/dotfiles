@@ -26,3 +26,10 @@ Style/Documentation:
   Enabled: false
 Style/TrailingCommaInHashLiteral:
   Enabled: false
+
+## ╭──────────────────────────────────────────────╮
+## │                   Style                      │
+## ╰──────────────────────────────────────────────╯
+
+Naming/MethodParameterName:
+  Enabled: false
