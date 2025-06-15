@@ -14,7 +14,7 @@ local get_jdtls_paths = function()
     end
 
     local path = {}
-    local jdtls_install = vim.fn.glob(vim.env.HOMEBREW_CELLAR .. "/jdtls/*", true, true)[1]
+    local jdtls_install = vim.env.HOMEBREW_PREFIX .. "/opt/jdtls"
     local platform_config = vim.loop.os_uname().sysname == "Darwin" and "config_mac" or "config_linux"
 
     path.data_dir = vim.fn.stdpath("cache") .. "/nvim-jdtls"
