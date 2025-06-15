@@ -241,7 +241,7 @@ A fast, scalable, and distributed revision control system
 
 The reason for this goofy git configuration is to ensure that I don't commit my personal email to a remote repository, that's it really.
 
-[Mise](https://mise.jdx.dev)
+## [Mise](https://mise.jdx.dev)
 
 The front-end to your dev env.
 
