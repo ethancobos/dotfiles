@@ -8,24 +8,42 @@ tap "nikitabobko/tap" # For aerospace
 ## │                  Formulae                    │
 ## ╰──────────────────────────────────────────────╯
 
-# Language Servers, auto-formatters, and linters
+# Java 
+brew "gradle"
 brew "jdtls"
 brew "google-java-format"
+
+# Python
 brew "pyright"
-brew "lua-language-server"
-brew "marksman"
 brew "mypy"
 brew "ruff"
+
+# Lua
+brew "lua-language-server"
 brew "stylua"
+
+# Ruby
+brew "mise" # Not Ruby specific, but that's all I use it for
+
+# Markdown
+brew "marksman"
+
+# Yaml
 brew "yaml-language-server"
+
+# Bash
 brew "bash-language-server"
 brew "shfmt"
 
-# CLI tools
-brew "fd"
+# JSON
 brew "jq"
+
+# Tmux
 brew "tmux"
 brew "tpm"
+
+# CLI tools
+brew "fd"
 brew "neovim"
 brew "oh-my-posh"
 brew "fzf"
@@ -33,7 +51,7 @@ brew "tree"
 brew "aws-sam-cli"
 brew "zinit"
 
-# Others
+# Misc
 brew "xz"
 brew "openssl@3"
 brew "libyaml"
@@ -41,13 +59,10 @@ brew "cairo"
 brew "librsvg"
 brew "graphviz"
 brew "libffi"
-brew "mise"
-brew "ruby"
 brew "tcl-tk"
 brew "unison"
 brew "xsel"
 brew "zlib"
-brew "gradle"
 
 ## ╭──────────────────────────────────────────────╮
 ## │                   Casks                      │
