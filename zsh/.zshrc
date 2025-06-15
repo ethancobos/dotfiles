@@ -42,12 +42,10 @@ if $ON_WORK_COMPUTER; then
     export PATH=$JAVA_HOME/bin:$PATH
     export PATH=/apollo/env/OdinTools/bin:$PATH
     export PATH=/apollo/env/envImprovement/bin:$PATH
-    export PATH=$HOME/.local/share/mise/shims:$PATH
     export PATH=$HOME/.local/bin/amazon:$PATH
 fi
 
 # Common Paths
-export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.local/bin/general:$PATH
 
 ## ╭──────────────────────────────────────────────╮
@@ -69,7 +67,6 @@ autoload -Uz compinit && compinit
 
 # Work only completions
 if $ON_WORK_COMPUTER; then   
-    source ~/.local/share/mise/completions.zsh
     source /home/ecobos/.brazil_completion/zsh_completion
 
     [ -f "/apollo/env/MechanicBigBirdCli/bin/mechanic-autocomplete.sh" ] && source "/apollo/env/MechanicBigBirdCli/bin/mechanic-autocomplete.sh"
@@ -186,13 +183,8 @@ alias bbic="brew update &&\
 ## │              Shell Integrations              │
 ## ╰──────────────────────────────────────────────╯
 
-# Work only shell integrations
-if $ON_WORK_COMPUTER; then   
-    # Set up mise for runtime management
-    eval "$(/home/ecobos/.local/bin/mise activate zsh)"
-fi
-
 # Common shell integrations
+eval "$(mise activate zsh)"
 eval "$(fzf --zsh)"
 eval "$(oh-my-posh init zsh --config $HOME/dotfiles/oh-my-posh/main.yaml)"
 

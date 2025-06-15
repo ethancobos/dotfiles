@@ -144,6 +144,8 @@ A terminal multiplexer.
 
         ln -s ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 
+3. Open up a tmux session and run `C-Space I` (i.e. tmux prefix plus I) to install all tpm plugins defined in `.tmux.conf`. tpm is installed via Brewfile like almost everything else in this repo.
+
 ### Usage
 
 Tmux is one of the more important tools that I work with everyday. Since I do a lot of work on a remote desktop I always ensure that I'm working within a tmux session so that my dev environment does not get lost when I close the shh session. Additionally it makes managing independent projects much smother since I can keep them in separate tmux sessions. I have a lot of useful scripts for configuring my tmux sessions from scratch as well as some aliases which make switching between sessions really fast.
@@ -215,7 +217,7 @@ A fast, scalable, and distributed revision control system
 
 ### Installation and Configuration
 
-1. Can be installed with Homebrew, but it should come pre-installed on most machines. 
+1. Can be installed with Homebrew, but it should comes pre-installed on mac. 
 2. Create the following file:
 
         touch ~/dotfiles/git/.gitconfig.local
@@ -238,6 +240,25 @@ A fast, scalable, and distributed revision control system
 ### Usage
 
 The reason for this goofy git configuration is to ensure that I don't commit my personal email to a remote repository, that's it really.
+
+[mise](https://mise.jdx.dev)
+
+The front-end to your dev env.
+
+### Installation and Configuration
+
+1. Installed along with other packages in Brewfile via `brew "mise"`
+2. Soft-link `mise` directory to the `.config` directory:
+
+        ln -s ~/dotfiles/mise ~/.config/mise 
+
+3. Install mise tools/languages:
+
+        mise install
+
+### Usage
+
+I only use mise for managing my ruby version for work, but it can do a lot more.
 
 ## [Zsh](https://www.zsh.org/)
 
@@ -291,7 +312,11 @@ A Programmer's Best Friend.
 ### Installation and Configuration
 
 1. Installed along with other packages in Brewfile via `brew "ruby"`
-2. Soft-link `.rubocop.yml` directory to the home directory:
+2. Install `rubocop` and `ruby-lsp` (make sure you have [mise](#mise) installed):
+
+        gem install ruby-lsp rubocop
+
+3. Soft-link `.rubocop.yml` directory to the home directory:
 
         ln -s ~/dotfiles/ruby/.rubocop.yml ~/.rubocop.yml
 
@@ -305,7 +330,7 @@ A highly configurable text editor.
 
 ### Installation and Configuration
 
-1. Can be installed with Homebrew, but it should come pre-installed on most machines. 
+1. Can be installed with Homebrew, but it should comes pre-installed on mac. 
 2. Soft-link `.vimrc` file to home directory:
 
         ln -s ~/dotfiles/vim/.vimrc ~/.vimrc
