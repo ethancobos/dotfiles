@@ -42,7 +42,7 @@ blocks:
           background: transparent
           type: git
           style: plain
-      newline: true
+      newline: false
     - type: rprompt
       overflow: hidden
       segments:
