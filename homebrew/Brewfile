@@ -8,6 +8,9 @@ tap "nikitabobko/tap" # For aerospace
 ## │                  Formulae                    │
 ## ╰──────────────────────────────────────────────╯
 
+# Rust
+brew "rustup"
+
 # Java 
 brew "gradle"
 brew "jdtls"

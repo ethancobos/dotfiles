@@ -16,6 +16,7 @@ return {
                 -- "ruff_format",
                 "ruff_organize_imports",
             },
+            rust = { "rustfmt" },
             -- java = { "google-java-format" },
             -- ruby = { "rubocop" },
         },

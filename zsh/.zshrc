@@ -47,6 +47,7 @@ fi
 
 # Common Paths
 export PATH=$HOME/.local/bin/general:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
 
 ## ╭──────────────────────────────────────────────╮
 ## │                Completions                   │

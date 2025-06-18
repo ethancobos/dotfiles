@@ -12,6 +12,7 @@ local enabled_servers = {
     "yaml-language-server",
     "bash-language-server",
     "marksman",
+    "rust-analyzer",
 }
 
 -- ╭──────────────────────────────────────────────╮
