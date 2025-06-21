@@ -349,8 +349,9 @@ For MacOS:
 
 1. Chose a wallpaper from the `wallpaper` directory. They are all the same, but I've included various aspect ratios to experiment with.
 2. In your wallpaper settings select `fit to screen`
-3. For the fill color, chose hex value `1E1E2E` and set the color profile to `Display P3` (click the three dots next to the RGB drop down menu)
-4. If the colors look off then you might just need to experiment with it until it looks seamless.
+3. For the fill color, select RGB sliders, then click the 3 dots next to the drop down menu and make sure the color value is `8-bit (0-255)` and the profile is `sRGB IEC61966-2.1`
+4. Then copy the following hex code in for the color: `#1e1e2e`. If all goes well the fill color should be seamless.
+5. If the colors look off then you might just need to experiment with it until it looks seamless.
 
 ### Usage
 
