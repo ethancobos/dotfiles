@@ -354,4 +354,4 @@ For MacOS:
 
 ### Usage
 
-Evangelion is my favorite show of all time. I use the same Catppuccin-Evangelion wallpaper for my home and work desktops. 
+Evangelion is my favorite show of all time. I use the same Catppuccin-Evangelion wallpaper for my home and work desktops. Here is a link to where I found this wallpaper originally: https://wallhere.com/it/wallpaper/2153943 
