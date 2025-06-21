@@ -345,9 +345,12 @@ Consistency is key.
 
 ### Installation and Configuration
 
-1. My wallpaper is included in the `wallpaper` directory. Setting wallpaper is going to be machine-specific
-2. If the sizing is off, just 
+For MacOS:
 
+1. Chose a wallpaper from the `wallpaper` directory. They are all the same, but I've included various aspect ratios to experiment with.
+2. In your wallpaper settings select `fit to screen`
+3. For the fill color, chose hex value `1E1E2E` and set the color profile to `Display P3` (click the three dots next to the RGB drop down menu)
+4. If the colors look off then you might just need to experiment with it until it looks seamless.
 
 ### Usage
 
