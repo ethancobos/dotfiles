@@ -338,3 +338,17 @@ A highly configurable text editor.
 ### Usage
 
 I never use vim, so this configuration is very minimal. It's probably best to not even bother with configuring it, Neovim will always be better.
+
+## Wallpaper
+
+Consistency is key. 
+
+### Installation and Configuration
+
+1. My wallpaper is included in the `wallpaper` directory. Setting wallpaper is going to be machine-specific
+2. If the sizing is off, just 
+
+
+### Usage
+
+Evangelion is my favorite show of all time. I use the same Catppuccin-Evangelion wallpaper for my home and work desktops. 
