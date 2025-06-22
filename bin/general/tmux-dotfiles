@@ -1,5 +1,9 @@
 #!/bin/bash
 
+has_command() {
+    which "$1" >/dev/null 2>&1
+}
+
 SESSION_ROOT_PATH=$HOME/dotfiles/
 SESSION_NAME="dotfiles"
 ROOT_WINDOW_NAME="Root"
@@ -7,10 +11,6 @@ EDITOR_WINDOW_NAME="Vim"
 Q_CHAT_COMMAND="q chat"
 NVIM_COMMAND="vim"
 ATTACH_PANE_NUM=0
-
-has_command() {
-    which "$1" >/dev/null 2>&1
-}
 
 # Ensure the target is a valid directory
 if [ ! -d "$SESSION_ROOT_PATH" ]; then
