@@ -1,10 +1,11 @@
 #!/bin/bash
 
-SESSION_NAME="dotfiles"
 SESSION_ROOT_PATH=$HOME/dotfiles/
+SESSION_NAME="dotfiles"
 ROOT_WINDOW_NAME="Root"
 EDITOR_WINDOW_NAME="Vim"
 Q_CHAT_COMMAND="q chat"
+NVIM_COMMAND="vim"
 
 has_command() {
     which "$1" >/dev/null 2>&1
@@ -51,7 +52,7 @@ tmux split-window -h -t "$SESSION_NAME:$EDITOR_WINDOW_NAME" -c "$SESSION_ROOT_PA
 tmux resize-pane -t "$SESSION_NAME:$EDITOR_WINDOW_NAME.0" -R $(($(tput cols) / 3))
 
 # Open vim in the left pane (pane 0)
-tmux send-keys -t "$SESSION_NAME:$EDITOR_WINDOW_NAME.0" 'vim' C-m
+tmux send-keys -t "$SESSION_NAME:$EDITOR_WINDOW_NAME.0" "$NVIM_COMMAND" C-m
 
 # Attach to the newly created session
 tmux attach-session -t "$SESSION_NAME:$ROOT_WINDOW_NAME.1"
