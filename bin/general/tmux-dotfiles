@@ -1,11 +1,18 @@
 #!/bin/bash
 
-REPO_ROOT=$HOME/dotfiles/
 SESSION_NAME="dotfiles"
+SESSION_ROOT_PATH=$HOME/dotfiles/
+ROOT_WINDOW_NAME="Root"
+EDITOR_WINDOW_NAME="Vim"
+Q_CHAT_COMMAND="q chat"
+
+has_command() {
+    which "$1" >/dev/null 2>&1
+}
 
 # Ensure the target is a valid directory
-if [ ! -d "$REPO_ROOT" ]; then
-    echo "Error: '$REPO_ROOT' is not a directory."
+if [ ! -d "$SESSION_ROOT_PATH" ]; then
+    echo "Error: '$SESSION_ROOT_PATH' is not a directory."
     exit 1
 fi
 
@@ -16,22 +23,35 @@ if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
 fi
 
 # Create a new tmux session
-tmux new-session -d -s "$SESSION_NAME" -c "$REPO_ROOT"
+tmux new-session -d -s "$SESSION_NAME" -c "$SESSION_ROOT_PATH"
 
 # Configure the first window (default window)
-tmux rename-window -t "$SESSION_NAME:0" "work-dotfiles"
+tmux rename-window -t "$SESSION_NAME:0" "$ROOT_WINDOW_NAME"
+
+# Start a q session if q binary exists
+if has_command q; then
+
+    # split the window in half
+    tmux split-window -h -t "$SESSION_NAME:$ROOT_WINDOW_NAME" -c "$REPO_ROOT_PATH"
+
+    # make the left pane take up two thirds of the screen
+    tmux resize-pane -t "$SESSION_NAME:$ROOT_WINDOW_NAME.0" -R $(($(tput cols) / 3))
+
+    # Start a `q chat` session in the left pane (pane 0)
+    tmux send-keys -t "$SESSION_NAME:$ROOT_WINDOW_NAME.0" "$Q_CHAT_COMMAND" C-m
+fi
 
 # Create a new window named after the directory
-tmux new-window -t "$SESSION_NAME:" -n "vim" -c "$REPO_ROOT"
+tmux new-window -t "$SESSION_NAME:" -n "$EDITOR_WINDOW_NAME" -c "$SESSION_ROOT_PATH"
 
 # split the window in half
-tmux split-window -h -t "$SESSION_NAME:vim" -c "$REPO_ROOT"
+tmux split-window -h -t "$SESSION_NAME:$EDITOR_WINDOW_NAME" -c "$SESSION_ROOT_PATH"
 
 # make the left pane take up two thirds of the screen
-tmux resize-pane -t "$SESSION_NAME:vim.0" -R $(($(tput cols) / 3))
+tmux resize-pane -t "$SESSION_NAME:$EDITOR_WINDOW_NAME.0" -R $(($(tput cols) / 3))
 
 # Open vim in the left pane (pane 0)
-tmux send-keys -t "$SESSION_NAME:vim.0" 'vim' C-m
+tmux send-keys -t "$SESSION_NAME:$EDITOR_WINDOW_NAME.0" 'vim' C-m
 
 # Attach to the newly created session
-tmux attach-session -t "$SESSION_NAME"
+tmux attach-session -t "$SESSION_NAME:$ROOT_WINDOW_NAME.1"
