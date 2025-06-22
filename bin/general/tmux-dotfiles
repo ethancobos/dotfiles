@@ -6,6 +6,7 @@ ROOT_WINDOW_NAME="Root"
 EDITOR_WINDOW_NAME="Vim"
 Q_CHAT_COMMAND="q chat"
 NVIM_COMMAND="vim"
+ATTACH_PANE_NUM=0
 
 has_command() {
     which "$1" >/dev/null 2>&1
@@ -32,6 +33,8 @@ tmux rename-window -t "$SESSION_NAME:0" "$ROOT_WINDOW_NAME"
 # Start a q session if q binary exists
 if has_command q; then
 
+    ATTACH_PANE_NUM=1
+
     # split the window in half
     tmux split-window -h -t "$SESSION_NAME:$ROOT_WINDOW_NAME" -c "$REPO_ROOT_PATH"
 
@@ -55,4 +58,4 @@ tmux resize-pane -t "$SESSION_NAME:$EDITOR_WINDOW_NAME.0" -R $(($(tput cols) / 3
 tmux send-keys -t "$SESSION_NAME:$EDITOR_WINDOW_NAME.0" "$NVIM_COMMAND" C-m
 
 # Attach to the newly created session
-tmux attach-session -t "$SESSION_NAME:$ROOT_WINDOW_NAME.1"
+tmux attach-session -t "$SESSION_NAME:$ROOT_WINDOW_NAME.$ATTACH_PANE_NUM"

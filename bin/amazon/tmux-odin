@@ -1,5 +1,9 @@
 #!/bin/bash
 
+has_command() {
+    which "$1" >/dev/null 2>&1
+}
+
 SESSION_NAME="odin"
 WS_ROOT="$HOME/experiments/OdinAudit/"
 

@@ -15,6 +15,7 @@ BRAZIL_SRC_ROOT="$SESSION_ROOT_PATH"/src
 ROOT_WINDOW_NAME="Root"
 Q_CHAT_COMMAND="q chat"
 NVIM_COMMAND="vim"
+ATTACH_PANE_NUM=0
 
 # Ensure the target is a valid directory
 if [ ! -d "$SESSION_ROOT_PATH" ]; then
@@ -36,6 +37,8 @@ tmux rename-window -t "$SESSION_NAME:0" "$ROOT_WINDOW_NAME"
 
 # Start a q session if q binary exists
 if has_command q; then
+
+    ATTACH_PANE_NUM=1
 
     # split the window in half
     tmux split-window -h -t "$SESSION_NAME:$ROOT_WINDOW_NAME" -c "$REPO_ROOT_PATH"
@@ -74,4 +77,4 @@ for dir in "$BRAZIL_SRC_ROOT"/*/; do
 done
 
 # Attach to the newly created session
-tmux attach-session -t "$SESSION_NAME:$ROOT_WINDOW_NAME.1"
+tmux attach-session -t "$SESSION_NAME:$ROOT_WINDOW_NAME.$ATTACH_PANE_NUM"
