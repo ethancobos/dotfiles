@@ -41,7 +41,7 @@ if has_command q; then
     ATTACH_PANE_NUM=1
 
     # split the window in half
-    tmux split-window -h -t "$SESSION_NAME:$ROOT_WINDOW_NAME" -c "$REPO_ROOT_PATH"
+    tmux split-window -h -t "$SESSION_NAME:$ROOT_WINDOW_NAME" -c "$SESSION_ROOT_PATH"
 
     # make the left pane take up two thirds of the screen
     tmux resize-pane -t "$SESSION_NAME:$ROOT_WINDOW_NAME.0" -R $(($(tput cols) / 3))
