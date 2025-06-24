@@ -9,49 +9,49 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-SESSION_ROOT_PATH="$1"
-SESSION_NAME=$(basename "$SESSION_ROOT_PATH")
-BRAZIL_SRC_ROOT="$SESSION_ROOT_PATH"/src
-ROOT_WINDOW_NAME="Root"
-Q_CHAT_COMMAND="q chat"
-NVIM_COMMAND="vim"
-ATTACH_PANE_NUM=0
+session_root_path="$1"
+session_name=$(basename "$session_root_path")
+brazil_src_root="$session_root_path"/src
+root_window_name="Root"
+q_chat_command="q chat"
+nvim_command="vim"
+attach_pane_num=0
 
 # Ensure the target is a valid directory
-if [ ! -d "$SESSION_ROOT_PATH" ]; then
-    echo "Error: '$SESSION_ROOT_PATH' is not a directory."
+if [ ! -d "$session_root_path" ]; then
+    echo "Error: '$session_root_path' is not a directory."
     exit 1
 fi
 
 # Check if a tmux session with this name already exists
-if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
-    tmux attach-session -t "$SESSION_NAME"
+if tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux attach-session -t "$session_name"
     exit 0
 fi
 
 # Create a new tmux session
-tmux new-session -d -s "$SESSION_NAME" -c "$SESSION_ROOT_PATH"
+tmux new-session -d -s "$session_name" -c "$session_root_path"
 
 # Configure the first window (default window)
-tmux rename-window -t "$SESSION_NAME:0" "$ROOT_WINDOW_NAME"
+tmux rename-window -t "$session_name:0" "$root_window_name"
 
 # Start a q session if q binary exists
 if has_command q; then
 
-    ATTACH_PANE_NUM=1
+    attach_pane_num=1
 
     # split the window in half
-    tmux split-window -h -t "$SESSION_NAME:$ROOT_WINDOW_NAME" -c "$SESSION_ROOT_PATH"
+    tmux split-window -h -t "$session_name:$root_window_name" -c "$session_root_path"
 
     # make the left pane take up two thirds of the screen
-    tmux resize-pane -t "$SESSION_NAME:$ROOT_WINDOW_NAME.0" -R $(($(tput cols) / 3))
+    tmux resize-pane -t "$session_name:$root_window_name.0" -R $(($(tput cols) / 3))
 
     # Start a `q chat` session in the left pane (pane 0)
-    tmux send-keys -t "$SESSION_NAME:$ROOT_WINDOW_NAME.0" "$Q_CHAT_COMMAND" C-m
+    tmux send-keys -t "$session_name:$root_window_name.0" "$q_chat_command" C-m
 fi
 
 # Create a window for each package in ws
-for dir in "$BRAZIL_SRC_ROOT"/*/; do
+for dir in "$brazil_src_root"/*/; do
     # Skip if no subdirectories are found
     if [ ! -d "$dir" ]; then
         continue
@@ -61,20 +61,20 @@ for dir in "$BRAZIL_SRC_ROOT"/*/; do
     dir_name=$(basename "$dir")
 
     # Create a new window named after the directory
-    tmux new-window -t "$SESSION_NAME:" -n "$dir_name" -c "$dir"
+    tmux new-window -t "$session_name:" -n "$dir_name" -c "$dir"
 
     # split the window in half
-    tmux split-window -h -t "$SESSION_NAME:$dir_name" -c "$dir"
+    tmux split-window -h -t "$session_name:$dir_name" -c "$dir"
 
     # make the left pane take up two thirds of the screen
-    tmux resize-pane -t "$SESSION_NAME:$dir_name.0" -R $(($(tput cols) / 3))
+    tmux resize-pane -t "$session_name:$dir_name.0" -R $(($(tput cols) / 3))
 
     # split the right pane in half vertically
-    tmux split-window -v -t "$SESSION_NAME:$dir_name.1" -c "$dir"
+    tmux split-window -v -t "$session_name:$dir_name.1" -c "$dir"
 
     # Open vim in the left pane (pane 0)
-    tmux send-keys -t "$SESSION_NAME:$dir_name.0" "$NVIM_COMMAND" C-m
+    tmux send-keys -t "$session_name:$dir_name.0" "$nvim_command" C-m
 done
 
 # Attach to the newly created session
-tmux attach-session -t "$SESSION_NAME:$ROOT_WINDOW_NAME.$ATTACH_PANE_NUM"
+tmux attach-session -t "$session_name:$root_window_name.$attach_pane_num"
