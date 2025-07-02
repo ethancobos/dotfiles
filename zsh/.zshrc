@@ -151,6 +151,7 @@ fi
 # misc
 alias h="cd ~"
 alias c="clear"
+alias r="reset"
 
 # python
 alias python="python3"
