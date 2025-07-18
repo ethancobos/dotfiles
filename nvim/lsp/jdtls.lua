@@ -1,4 +1,8 @@
 local amazon = require("utils.amazon")
+local jdtls_utils = require('jdtls.utils')
+local jdtls_capabilities = require('jdtls.capabilities')
+
+local api = vim.api
 
 -- ╭──────────────────────────────────────────────╮
 -- │                   Helpers                    │
@@ -82,11 +86,37 @@ local filetypes = {
 }
 
 -- ╭──────────────────────────────────────────────╮
+-- │                 Root Markers                 │
+-- ╰──────────────────────────────────────────────╯
+
+-- Bemol generates a `.classpath` file which uses paths relative to the
+-- Brazil ws root. This means our
+local root_markers = {
+    "packageInfo",
+    ".bemol",
+}
+
+-- ╭──────────────────────────────────────────────╮
 -- │                   On Init                    │
 -- ╰──────────────────────────────────────────────╯
 
-local on_init = function(_, _)
+local on_init = function(client, _)
     amazon.add_all_ws_folder_bemol()
+
+    vim.api.nvim_create_autocmd({ "BufReadCmd" }, {
+        pattern = { "jdt://*", "*.class" },
+        callback = function(_)
+            jdtls_capabilities.open_classfile(client, vim.fn.expand("<amatch>"))
+
+            local bufnr = api.nvim_get_current_buf()
+            local bufname = api.nvim_buf_get_name(bufnr)
+            -- Won't be able to get the correct root path for jdt:// URIs
+            -- So need to connect to an existing client
+            if vim.startswith(bufname, "jdt://") then
+                jdtls_utils.attach_to_active_buf(bufnr, client)
+            end
+        end,
+    })
 end
 
 -- ╭──────────────────────────────────────────────╮
@@ -180,6 +210,11 @@ local flags = {
 
 local init_options = {
     bundles = path.bundles,
+    extendedClientCapabilities = {
+        classFileContentsSupport = true,
+        generateToStringPrompt = true,
+        hashCodeEqualsPrompt = true,
+    },
 }
 
 -- ╭──────────────────────────────────────────────╮
@@ -189,6 +224,7 @@ local init_options = {
 return {
     cmd = cmd,
     filetypes = filetypes,
+    root_markers = root_markers,
     on_init = on_init,
     settings = settings,
     flags = flags,
