@@ -90,7 +90,7 @@ local filetypes = {
 -- ╰──────────────────────────────────────────────╯
 
 -- Bemol generates a `.classpath` file which uses paths relative to the
--- Brazil ws root. This means our
+-- Brazil ws root. This means our root needs to be the Brazil ws root.
 local root_markers = {
     "packageInfo",
     ".bemol",

@@ -6,7 +6,7 @@ local M = {
     },
 }
 
---- Determines if jdtls should attack to the given buffer
+--- Determines if jdtls should attach to the given buffer
 ---
 --- @param bufnr integer
 --- @return boolean
@@ -18,7 +18,7 @@ local may_jdtls_buf = function(bufnr)
     return vim.endswith(fname, "build.gradle") or vim.endswith(fname, "pom.xml")
 end
 
---- Execute arbitrary client command
+--- Executes an arbitrary client command
 ---
 --- @param command any
 --- @param callback any
@@ -53,7 +53,7 @@ end
 ---
 --- @param bufnr integer
 --- @param client vim.lsp.Client
---- @return any
+--- @return integer | nil
 function M.attach_to_active_buf(bufnr, client)
     local try_attach = function(buf)
         if not may_jdtls_buf(buf) then
