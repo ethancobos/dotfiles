@@ -75,3 +75,13 @@ g.loaded_ruby_provider = 0
 
 opt.spelllang = "en_us"
 opt.spell = true
+
+-- ╭──────────────────────────────────────────────╮
+-- │                   Files                      │
+-- ╰──────────────────────────────────────────────╯
+
+vim.filetype.add({
+  extension = {
+    properties = "dosini",
+  },
+})
