@@ -59,22 +59,13 @@ local cmd = {
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
     "-Dlog.protocol=true",
     "-Dlog.level=ALL",
-    "-javaagent:" .. path.java_agent,
-    "-Xms1g",
+    "--jvm-arg=-javaagent:" .. path.java_agent,
+    "-jar", path.launcher_jar,
+    "-configuration", path.platform_config,
+    "-data", data_dir,
     "--add-modules=ALL-SYSTEM",
-    "--add-opens",
-    "java.base/java.util=ALL-UNNAMED",
-    "--add-opens",
-    "java.base/java.lang=ALL-UNNAMED",
-
-    "-jar",
-    path.launcher_jar,
-
-    "-configuration",
-    path.platform_config,
-
-    "-data",
-    data_dir,
+    "--add-opens", "java.base/java.util=ALL-UNNAMED",
+    "--add-opens", "java.base/java.lang=ALL-UNNAMED",
 }
 
 -- ╭──────────────────────────────────────────────╮
