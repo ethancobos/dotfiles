@@ -1,5 +1,10 @@
 [include]
-  path = ~/dotfiles/git/.gitconfig.local
+    # file contains the following sections which have sensitive information
+    # that I don't want to commit to a remote repo:
+    # [user]
+    #   name = <name>
+    #   email = <email>
+    path = ~/dotfiles/git/.gitconfig.local
 [init]
 	defaultBranch = mainline
 [core]
