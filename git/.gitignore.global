@@ -1,0 +1,8 @@
+# Bemol Generated jdtls LSP files
+.classpath
+.factorypath
+.project
+.settings/
+
+# Bemol generated solargraph LSP files
+.solargraph.yml

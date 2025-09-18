@@ -2,3 +2,5 @@
   path = ~/dotfiles/git/.gitconfig.local
 [init]
 	defaultBranch = mainline
+[core]
+	excludesfile = ~/dotfiles/git/.gitignore.global
