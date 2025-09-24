@@ -8,6 +8,7 @@ local enabled_servers = {
     "lua-language-server",
     "pyright",
     "ruby-lsp",
+    -- "solargraph",
     "jdtls",
     "yaml-language-server",
     "bash-language-server",

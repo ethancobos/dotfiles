@@ -312,9 +312,9 @@ A Programmer's Best Friend.
 ### Installation and Configuration
 
 1. Installed along with other packages in Brewfile via `brew "ruby"`
-2. Install `rubocop` and `ruby-lsp` (make sure you have [mise](#mise) installed):
+2. Install the following tools (make sure you have [mise](#mise) installed):
 
-        gem install ruby-lsp rubocop
+        gem install ruby-lsp rubocop solargraph
 
 3. Soft-link `.rubocop.yml` directory to the home directory:
 
