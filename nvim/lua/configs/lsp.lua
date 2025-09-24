@@ -45,13 +45,19 @@ vim.diagnostic.config({
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(event)
-        vim.notify("lsp attached")
         -- LspInfo
         vim.api.nvim_create_user_command(
             "LspInfo",
             ":checkhealth vim.lsp",
             { desc = "Alias to `:checkhealth vim.lsp`" }
         )
+
+        -- LspLog
+        vim.api.nvim_create_user_command("LspLog", function()
+            vim.cmd(string.format("tabnew %s", vim.lsp.log.get_filename()))
+        end, {
+            desc = "Opens the Nvim LSP client log.",
+        })
 
         -- Keymaps
         local map = function(keys, func, desc, mode)
