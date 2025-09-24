@@ -5,46 +5,50 @@ local jdtls_capabilities = require('jdtls.capabilities')
 local api = vim.api
 
 -- ╭──────────────────────────────────────────────╮
--- │                   Helpers                    │
+-- │                Local Vars                    │
 -- ╰──────────────────────────────────────────────╯
 
--- to cache some of the data calculated below
-local cache_vars = {}
+-- All of the paths of various files needed for jdtls
 
--- Get all of the paths of various things needed for jdtls
-local get_jdtls_paths = function()
-    if cache_vars.paths then
-        return cache_vars.paths
-    end
+-- The path to my jdtls instalation directory, this is the root directory for many of the files 
+-- needed by jdtls and is used in many of the variables below
+local jdtls_install = vim.env.HOMEBREW_PREFIX .. "/opt/jdtls"
 
-    local path = {}
-    local jdtls_install = vim.env.HOMEBREW_PREFIX .. "/opt/jdtls"
-    local platform_config = vim.loop.os_uname().sysname == "Darwin" and "config_mac" or "config_linux"
-
-    path.data_dir = vim.fn.stdpath("cache") .. "/nvim-jdtls"
-    path.jdtls_bin = jdtls_install .. "/bin/jdtls"
-    path.java_agent = vim.env.HOME .. "/dotfiles/java/lombok/lombok.jar"
-    path.launcher_jar = vim.fn.glob(jdtls_install .. "/libexec/plugins/org.eclipse.equinox.launcher_*.jar")
-    path.platform_config = jdtls_install .. "/libexec/" .. platform_config
-    path.runtimes = {}
-    path.bundles = {}
-
-    cache_vars.paths = path
-
-    return path
-end
-
-local path = get_jdtls_paths()
+-- jdtls uses a data directory to cache indexing data. By default it will create this
+-- directory automatically in some temporary directory that gets cleared out on system resart.
+-- I opt to configure this directory myself because it allows it to persist better, and I always
+-- know where it is incase I need to invalidate the cache.
+--
+-- The location of this directory is something like ~/.cache/nvim/nvim-jdtls_<path_to_workspace>/,
+-- but sometimes indexing will break and I'll have to wipe the cache, to be safe I wipe it for all my 
+-- projects by running `rm -rf ~/.cache/nvim/jdtls` 
 local project_path = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h")
 local project_path_hash = string.gsub(project_path, "[/\\:+-]", "_")
-local data_dir = path.data_dir .. project_path_hash
+local data_dir = vim.fn.stdpath("cache") .. "/jdtls/" .. project_path_hash
+
+-- The actual jdtls binary
+local jdtls_bin = jdtls_install .. "/bin/jdtls"
+
+-- Allows indexing of lombok-generated code
+local java_agent = vim.env.HOME .. "/dotfiles/java/lombok/lombok.jar"
+
+-- path to my instalation of the launcher
+local launcher_jar = vim.fn.glob(jdtls_install .. "/libexec/plugins/org.eclipse.equinox.launcher_*.jar")
+
+-- Some special configuration for whatever OS I'm using (Mac or Linux)
+local os_config = vim.loop.os_uname().sysname == "Darwin" and "config_mac" or "config_linux"
+local platform_config = jdtls_install .. "/libexec/" .. os_config
+
+-- If I ever need any java runtimes or bundles, I'll include them here
+local runtimes = {}
+local bundles = {}
 
 -- ╭──────────────────────────────────────────────╮
 -- │                   Command                    │
 -- ╰──────────────────────────────────────────────╯
 
 local cmd = {
-    path.jdtls_bin,
+    jdtls_bin,
 
     "-XX:+UseParallelGC", -- Better performance for multi-core systems
     "-XX:GCTimeRatio=4", -- Spend less time on GC
@@ -59,9 +63,9 @@ local cmd = {
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
     "-Dlog.protocol=true",
     "-Dlog.level=ALL",
-    "--jvm-arg=-javaagent:" .. path.java_agent,
-    "-jar", path.launcher_jar,
-    "-configuration", path.platform_config,
+    "--jvm-arg=-javaagent:" .. java_agent,
+    "-jar", launcher_jar,
+    "-configuration", platform_config,
     "-data", data_dir,
     "--add-modules=ALL-SYSTEM",
     "--add-opens", "java.base/java.util=ALL-UNNAMED",
@@ -110,7 +114,7 @@ local settings = {
         },
         configuration = {
             updateBuildConfiguration = "automatic",
-            runtimes = path.runtimes,
+            runtimes = runtimes,
         },
         maven = {
             downloadSources = true,
@@ -189,7 +193,7 @@ local flags = {
 -- ╰──────────────────────────────────────────────╯
 
 local init_options = {
-    bundles = path.bundles,
+    bundles = bundles,
     extendedClientCapabilities = {
         classFileContentsSupport = true,
         generateToStringPrompt = true,

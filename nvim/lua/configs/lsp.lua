@@ -45,6 +45,7 @@ vim.diagnostic.config({
 
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(event)
+        vim.notify("lsp attached")
         -- LspInfo
         vim.api.nvim_create_user_command(
             "LspInfo",
