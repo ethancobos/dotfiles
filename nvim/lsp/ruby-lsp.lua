@@ -13,6 +13,16 @@ local cmd = { "ruby-lsp" }
 local filetypes = { "ruby", "eruby" }
 
 -- ╭──────────────────────────────────────────────╮
+-- │                Root Markers                  │
+-- ╰──────────────────────────────────────────────╯
+
+-- since I'm hacky with ruby lsp, I can't support multi-root workspaces
+-- so I override the root markers to ensure it uses package root instead
+-- of workspace root
+
+local root_markers = { "Config", ".git" }
+
+-- ╭──────────────────────────────────────────────╮
 -- │                 Init Options                 │
 -- ╰──────────────────────────────────────────────╯
 
@@ -64,6 +74,7 @@ end
 return {
     cmd = cmd,
     filetypes = filetypes,
+    root_markers = root_markers,
     init_options = init_options,
     on_init = on_init,
 }
