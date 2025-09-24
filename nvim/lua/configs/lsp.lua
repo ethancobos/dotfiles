@@ -109,8 +109,16 @@ capabilities.textDocument.completion.completionItem = {
 -- ╰──────────────────────────────────────────────╯
 
 local root_markers = {
-    ".git",
-    "Config",
+    {
+        -- Bemol generates a `.classpath` file which uses paths relative to the
+        -- Brazil ws root. This means our root needs to be the Brazil ws root.
+        "packageInfo",
+        ".bemol",
+    },
+    {
+        ".git",
+        "Config",
+    },
 }
 
 -- ╭──────────────────────────────────────────────╮
