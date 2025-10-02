@@ -73,8 +73,9 @@ g.loaded_ruby_provider = 0
 -- │                  Spelling                    │
 -- ╰──────────────────────────────────────────────╯
 
-opt.spelllang = "en_us"
 opt.spell = true
+opt.spelllang = "en_us"
+opt.spelloptions = "camel"
 
 -- ╭──────────────────────────────────────────────╮
 -- │                   Files                      │
