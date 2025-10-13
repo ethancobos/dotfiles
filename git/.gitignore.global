@@ -6,3 +6,6 @@
 
 # Bemol generated solargraph LSP files
 .solargraph.yml
+
+# MacOS specific files
+.DS_Store

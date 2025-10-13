@@ -1,6 +1,8 @@
 [include]
-    # file contains the following sections which have sensitive information
-    # that I don't want to commit to a remote repo:
+    # This file contains the following sections which have sensitive information
+    # that I don't want to commit to this remote repo. It is ignored in this 
+    # repo's .gitignore file to ensure it does not get pushed:
+    #
     # [user]
     #   name = <name>
     #   email = <email>
