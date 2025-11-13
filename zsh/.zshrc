@@ -138,7 +138,7 @@ if $ON_WORK_COMPUTER; then
     # Other
     alias print-java-version='printf "\n☕️ Java\n\n" && which java && java -version'
     alias switch-java-version='sudo alternatives --config java && source ~/.zshrc'
-    alias isengard="/apollo/env/AmazonAwsCli/bin/isengard"
+    alias aws="/apollo/env/AwsCli/bin/aws"
     alias kcurl="/apollo/env/envImprovement/bin/kcurl"
 
 # Home only aliases
