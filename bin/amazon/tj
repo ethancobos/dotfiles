@@ -44,9 +44,6 @@ if has_command q; then
     # split the window in half
     tmux split-window -h -t "$session_name:$root_window_name" -c "$session_root_path"
 
-    # make the left pane take up half of the screen
-    tmux resize-pane -t "$session_name:$root_window_name.0" -R $(($(tput cols) / 2))
-
     # Start a `q chat` session in the left pane (pane 0)
     tmux send-keys -t "$session_name:$root_window_name.0" "$q_chat_command" C-m
 fi

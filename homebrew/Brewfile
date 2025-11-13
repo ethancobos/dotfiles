@@ -53,6 +53,7 @@ brew "fzf"
 brew "tree"
 brew "aws-sam-cli"
 brew "zinit"
+brew "awscli"
 
 # Misc
 brew "xz"
