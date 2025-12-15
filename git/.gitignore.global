@@ -7,5 +7,10 @@
 # Bemol generated solargraph LSP files
 .solargraph.yml
 
+# Bemol generated pyright LSP files
+.env
+.vscode/
+pyrightconfig.json
+
 # MacOS specific files
 .DS_Store
